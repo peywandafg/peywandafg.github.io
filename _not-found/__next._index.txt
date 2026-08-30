@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[374,[],""]
+3:I[8172,[],""]
+:HL["/_next/static/css/f293f073699aba33.css","style"]
+0:{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/f293f073699aba33.css","precedence":"next"}]],["$","html",null,{"lang":"de","children":["$","body",null,{"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"EducationalOrganization\",\"name\":\"PEYWAND by AT\",\"url\":\"https://peywandafg.github.io/\",\"description\":\"Deutschkurse und Bildungsorientierung für Menschen aus Afghanistan.\",\"founder\":{\"@type\":\"Person\",\"name\":\"Muhammad Ali Tajikzei\"},\"areaServed\":[\"Afghanistan\",\"Germany\"],\"knowsLanguage\":[\"de\",\"fa\",\"ps\",\"en\"]}"}}],["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Q69g4sjmrd_BmgSus-uO5"}
