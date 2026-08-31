@@ -411,7 +411,9 @@
       whatsapp: "Über WhatsApp kontaktieren",
       germanyTitle: "Hilfe in Deutschland",
       germanyBody: "Deutschunterricht sowie Hilfe beim Verstehen von Briefen und Formularen.",
-      germanyAction: "Mehr erfahren"
+      germanyAction: "Mehr erfahren",
+      familyOffer: ["Familiennachzug", "Sprachliche Vorbereitung und verständliche Orientierung für den nächsten Schritt."],
+      companyOffer: ["Für Unternehmen", "Bedarf mitteilen und passende Profile strukturiert kennenlernen."]
     },
     en: {
       contactKicker: "Personal advice",
@@ -421,7 +423,9 @@
       whatsapp: "Contact via WhatsApp",
       germanyTitle: "Help in Germany",
       germanyBody: "German lessons and help understanding letters and forms.",
-      germanyAction: "Learn more"
+      germanyAction: "Learn more",
+      familyOffer: ["Family reunification", "Language preparation and clear guidance for the next step."],
+      companyOffer: ["For companies", "Share your needs and review suitable profiles in a structured way."]
     },
     fa: {
       contactKicker: "مشاوره شخصی",
@@ -431,7 +435,9 @@
       whatsapp: "تماس از طریق واتساپ",
       germanyTitle: "کمک در آلمان",
       germanyBody: "آموزش زبان آلمانی و کمک برای فهم نامه‌ها و فورم‌ها.",
-      germanyAction: "اطلاعات بیشتر"
+      germanyAction: "اطلاعات بیشتر",
+      familyOffer: ["پیوستن به خانواده", "آمادگی زبانی و راهنمایی روشن برای گام بعدی."],
+      companyOffer: ["برای شرکت‌ها", "نیاز خود را اعلام کنید و پروفایل‌های مناسب را منظم بررسی نمایید."]
     },
     ps: {
       contactKicker: "شخصي مشوره",
@@ -441,7 +447,9 @@
       whatsapp: "د واټساپ له لارې اړیکه",
       germanyTitle: "په آلمان کې مرسته",
       germanyBody: "د آلماني ژبې درسونه او د لیکونو او فورمو په پوهېدو کې مرسته.",
-      germanyAction: "نور معلومات"
+      germanyAction: "نور معلومات",
+      familyOffer: ["د کورنۍ یوځای کېدل", "ژبنی چمتووالی او د راتلونکي ګام لپاره روښانه لارښوونه."],
+      companyOffer: ["د شرکتونو لپاره", "خپله اړتیا شریکه او مناسب پروفایلونه په منظم ډول وپېژنئ."]
     }
   };
 
@@ -460,7 +468,7 @@
       "#peyvand-contact .contact-card strong{display:block;color:#e8cb78;font-family:Georgia,serif;font-size:23px}",
       "#peyvand-contact .contact-card a{display:inline-flex;margin-top:17px;border-radius:999px;background:#e3c66f;color:#102b23;padding:11px 17px;font-weight:800;text-decoration:none}",
       "#peyvand-de-summary{border-color:rgba(225,188,98,.24)}",
-      "@media(max-width:767px){.hero-luxury .max-w-2xl>.mt-9.flex{display:none!important}.hero-luxury .peyvand-trust-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}.hero-luxury .peyvand-trust-grid .trust-chip{grid-column:auto!important;min-height:54px!important;padding:12px 8px!important;font-size:11px!important}.hero-luxury .peyvand-trust-grid .trust-chip:first-child{grid-column:span 2!important;min-height:68px!important;border-color:rgba(225,188,98,.58)!important;background:rgba(225,188,98,.12)!important;font-size:14px!important}.hero-luxury #peyvand-family-chip,.hero-luxury #peyvand-germany-chip{opacity:.84;min-height:48px!important;font-size:10px!important}#angebote,#wege,#ablauf,#bewerbung,#peyvand-contact,#ueber-uns,#peyvand-official-team,#deutschland-hilfe{padding-top:72px!important;padding-bottom:72px!important}#peyvand-official-team .official-notice p{font-size:13px!important;line-height:1.65!important}#peyvand-official-team .team-card{padding:18px!important}#peyvand-official-team .team-card p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}}"
+      "@media(max-width:767px){.hero-luxury .max-w-2xl>.mt-9.flex{display:none!important}.hero-luxury .peyvand-trust-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}.hero-luxury .peyvand-trust-grid .trust-chip,.hero-luxury #peyvand-family-chip,.hero-luxury #peyvand-germany-chip{grid-column:auto!important;min-height:58px!important;height:58px!important;padding:10px 7px!important;font-size:10px!important;opacity:1!important}#angebote,#wege,#ablauf,#bewerbung,#peyvand-contact,#ueber-uns,#peyvand-official-team,#deutschland-hilfe{padding-top:72px!important;padding-bottom:72px!important}#peyvand-official-team .official-notice p{font-size:13px!important;line-height:1.65!important}#peyvand-official-team .team-card{padding:18px!important}#peyvand-official-team .team-card p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}}"
     ].join("");
     document.head.append(style);
   }
@@ -510,6 +518,41 @@
     card.querySelector("a").textContent = copy.germanyAction;
   }
 
+
+  function renderExtraOfferCards() {
+    const grid = document.querySelector("#angebote .mt-14.grid");
+    if (!grid) return;
+    const copy = structureCopy[language()];
+    const items = [
+      ["peyvand-offer-family", "Familie", copy.familyOffer[0], copy.familyOffer[1], "#peyvand-familie"],
+      ["peyvand-offer-germany", "Deutschland", copy.germanyTitle, copy.germanyBody, "#deutschland-hilfe"],
+      ["peyvand-offer-company", "Unternehmen", copy.companyOffer[0], copy.companyOffer[1], "#unternehmen"]
+    ];
+    items.forEach(item => {
+      let card = document.querySelector("#" + item[0]);
+      if (!card) {
+        card = document.createElement("article");
+        card.id = item[0];
+        card.className = "premium-card group relative overflow-hidden rounded-[2rem] p-7 sm:p-8";
+        card.innerHTML = '<div class="premium-card__glow"></div><div class="relative"><p class="mt-2 text-xs font-bold uppercase tracking-[.2em] text-[#dcb65d]"></p><h3 class="mt-3 font-serif text-3xl text-[#fbf5e6]"></h3><p class="mt-4 text-sm leading-7 text-[#afc3ba]"></p><a class="mt-6 inline-flex text-sm font-bold text-[#efd07a]"></a></div>';
+        grid.append(card);
+      }
+      card.querySelector("p:first-of-type").textContent = item[1];
+      card.querySelector("h3").textContent = item[2];
+      card.querySelector("p:last-of-type").textContent = item[3];
+      card.querySelector("a").href = item[4];
+      card.querySelector("a").textContent = structureCopy[language()].germanyAction;
+    });
+  }
+
+  function normalizePathNumbers() {
+    const cards = [...document.querySelectorAll("#wege .peyvand-path-grid > .journey-path")].slice(0, 5);
+    cards.forEach((card, index) => {
+      const number = card.querySelector(":scope > span");
+      if (number) number.textContent = String(index + 1).padStart(2, "0");
+    });
+  }
+
   function orderHeroChips() {
     const grid = document.querySelector(".hero-luxury .peyvand-trust-grid");
     if (!grid) return;
@@ -533,10 +576,9 @@
       "#wege",
       "#ablauf",
       "#bewerbung",
-      "#peyvand-contact",
+      "#deutschland-hilfe",
       "#ueber-uns",
       "#peyvand-official-team",
-      "#deutschland-hilfe",
       "#unternehmen"
     ];
     ordered.forEach(selector => {
@@ -548,8 +590,10 @@
   async function renderStructuredPage() {
     if (location.pathname.startsWith("/admin")) return;
     ensureStructureStyles();
-    await renderContactSection();
+    document.querySelector("#peyvand-contact")?.remove();
     addGermanySummaryCard();
+    renderExtraOfferCards();
+    normalizePathNumbers();
     orderHeroChips();
     reorderMobileSections();
   }
