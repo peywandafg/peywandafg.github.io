@@ -164,47 +164,35 @@
       #peyvand-mobile-social-stack {
         display: none;
       }
-      @media (max-width: 767px) {
-        main > a[href^="https://wa.me/"] {
-          right: 20px !important;
-          left: auto !important;
-          bottom: 18px !important;
-          z-index: 90 !important;
-          min-height: 48px !important;
-          padding: 0 16px !important;
-          border: 2px solid rgba(255,255,255,.75) !important;
-          box-shadow: 0 10px 28px rgba(0,0,0,.3), 0 0 0 4px rgba(34,197,94,.12) !important;
-          transform: none !important;
-          animation: none !important;
-          transition: background-color .2s, box-shadow .2s !important;
-        }
-        main[dir="rtl"] > a[href^="https://wa.me/"] {
-          left: 20px !important;
-          right: auto !important;
-        }
-      }
       #peyvand-mobile-social-stack a,
       #peyvand-mobile-social-stack span {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 38px;
-        height: 38px;
-        min-width: 38px !important;
+        width: 44px;
+        height: 44px;
+        min-width: 44px !important;
         padding: 0 !important;
         border-radius: 999px;
-        border: 1px solid rgba(255,255,255,.2);
+        border: 1px solid rgba(255,255,255,.28);
         color: #fff;
         box-shadow: 0 8px 22px rgba(0,0,0,.25);
         transform: none !important;
         animation: none !important;
       }
       #peyvand-mobile-social-stack svg {
-        width: 18px;
-        height: 18px;
+        display: none;
       }
       #peyvand-mobile-social-stack .peyvand-social-label {
-        display: none !important;
+        display: block !important;
+        width: auto;
+        height: auto;
+        overflow: visible;
+        clip: auto;
+        position: static;
+        font: 800 7px/1 Arial, sans-serif;
+        letter-spacing: 0;
+        white-space: nowrap;
       }
       #peyvand-mobile-menu-button {
         display: none;
