@@ -272,6 +272,23 @@
       #wege .journey-path p {
         line-height: 1.75;
       }
+      #wege .peyvand-path-grid {
+        grid-template-columns: 1fr;
+      }
+      #peyvand-family-chip {
+        grid-column: span 2;
+      }
+      @media (min-width: 640px) {
+        .hero-luxury .peyvand-trust-grid {
+          grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+        }
+        #peyvand-family-chip {
+          grid-column: auto;
+        }
+        #wege .peyvand-path-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        }
+      }
       @media (max-width: 767px) {
         .hero-luxury .peyvand-mobile-hero-logo {
           width: 100%;
@@ -659,6 +676,33 @@
     setText(consent, copy.consent);
   }
 
+  const familyPathTranslations = {
+    de: {
+      label: "Familiennachzug",
+      title: "Familiennachzug",
+      body: "Wenn du zu deiner Ehepartnerin oder deinem Ehepartner nach Deutschland ziehen möchtest, können je nach Fall Deutschkenntnisse und weitere Nachweise erforderlich sein. Wir erklären dir die Vorbereitung und helfen dir, den passenden Sprachweg zu verstehen.",
+      action: "Beratung anfragen"
+    },
+    en: {
+      label: "Family reunification",
+      title: "Family reunification",
+      body: "If you want to join your spouse in Germany, German-language skills and other documents may be required depending on your case. We explain the preparation and help you understand the appropriate language pathway.",
+      action: "Request advice"
+    },
+    fa: {
+      label: "پیوستن به خانواده",
+      title: "پیوستن به خانواده",
+      body: "اگر می‌خواهید نزد همسر خود به آلمان بروید، بسته به پرونده ممکن است مدرک زبان آلمانی و اسناد دیگری لازم باشد. ما مراحل آمادگی و مسیر مناسب زبان را به‌صورت روشن توضیح می‌دهیم.",
+      action: "درخواست مشاوره"
+    },
+    ps: {
+      label: "د کورنۍ یوځای کېدل",
+      title: "د کورنۍ یوځای کېدل",
+      body: "که غواړئ په آلمان کې له خپل مېړه یا مېرمنې سره یوځای شئ، د قضیې له مخې د آلماني ژبې سند او نور اسناد اړین کېدای شي. موږ د چمتووالي پړاوونه او مناسبه ژبنۍ لاره په ساده ډول تشریح کوو.",
+      action: "مشوره وغواړئ"
+    }
+  };
+
   const journeyExplanations = {
     de: {
       intro: "Sprachniveaus zeigen, wie gut du Deutsch verstehen, sprechen, lesen und schreiben kannst. Hier siehst du einfach erklärt, was jede Stufe und jeder mögliche Weg bedeutet.",
@@ -742,7 +786,7 @@
       if (copy.levels[index]) setText(label, copy.levels[index]);
     });
 
-    const pathCards = [...section.querySelectorAll(".journey-path")];
+    const pathCards = [...section.querySelectorAll(".journey-path")].filter(card => card.id !== "peyvand-familie");
     const ids = ["peyvand-ausbildung", "peyvand-studium", "peyvand-arbeit"];
     pathCards.forEach((card, index) => {
       card.id = ids[index];
@@ -750,11 +794,41 @@
       if (copy.paths[index]) setText(paragraph, copy.paths[index]);
     });
 
+    const pathGrid = pathCards[0]?.parentElement;
+    if (pathGrid) pathGrid.classList.add("peyvand-path-grid");
+    let familyCard = document.querySelector("#peyvand-familie");
+    if (!familyCard && pathGrid) {
+      familyCard = document.createElement("article");
+      familyCard.id = "peyvand-familie";
+      familyCard.className = "journey-path rounded-[2rem] p-6";
+      familyCard.innerHTML = '<span class="text-xs font-black tracking-[.18em] text-[#dfbd67]">04</span><h3 class="mt-7 font-serif text-2xl text-[#fff7e8]"></h3><p class="mt-3 text-sm leading-7 text-[#b9cbc3]"></p><a href="#bewerbung" class="mt-6 inline-flex items-center text-sm font-bold text-[#efd07a]"></a>';
+      pathGrid.append(familyCard);
+    }
+    const familyCopy = familyPathTranslations[language()];
+    setText(familyCard?.querySelector("h3"), familyCopy.title);
+    setText(familyCard?.querySelector("p"), familyCopy.body);
+    setText(familyCard?.querySelector("a"), familyCopy.action);
+
+    const oldFamilyCallout = section.querySelector(".family-callout");
+    if (oldFamilyCallout) oldFamilyCallout.style.display = "none";
+
     const panel = section.querySelector(".journey-panel");
     if (panel) panel.id = "peyvand-sprache";
 
+    const trustGrid = document.querySelector(".hero-luxury .trust-chip")?.parentElement;
+    if (trustGrid) trustGrid.classList.add("peyvand-trust-grid");
+    let familyChip = document.querySelector("#peyvand-family-chip");
+    if (!familyChip && trustGrid) {
+      familyChip = document.createElement("div");
+      familyChip.id = "peyvand-family-chip";
+      familyChip.className = "trust-chip flex items-center justify-center gap-2 px-3 py-5 text-xs font-bold tracking-[.08em] text-[#d7e2dc] sm:text-sm";
+      familyChip.innerHTML = '<span class="grid h-7 w-7 place-items-center rounded-full border border-[#e1bc62]/40 text-[10px] font-black text-[#e1bc62]">B1</span><span></span>';
+      trustGrid.append(familyChip);
+    }
+    setText(familyChip?.querySelector("span:last-child"), familyCopy.label);
+
     const chips = [...document.querySelectorAll(".hero-luxury .trust-chip")];
-    const targets = ["#peyvand-sprache", "#peyvand-studium", "#peyvand-ausbildung", "#unternehmen"];
+    const targets = ["#peyvand-sprache", "#peyvand-studium", "#peyvand-ausbildung", "#unternehmen", "#peyvand-familie"];
     chips.forEach((chip, index) => {
       if (chip.dataset.peyvandLinked) return;
       chip.dataset.peyvandLinked = "true";
