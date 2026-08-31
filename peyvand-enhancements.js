@@ -161,6 +161,9 @@
       #peyvand-mobile-menu-button {
         display: none !important;
       }
+      #peyvand-whatsapp-fallback {
+        display: none;
+      }
       #peyvand-mobile-social-stack {
         display: none;
       }
@@ -281,6 +284,25 @@
         display: none;
       }
       @media (max-width: 767px) {
+        #peyvand-whatsapp-fallback {
+          position: fixed;
+          right: 20px;
+          bottom: 20px;
+          z-index: 90;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          min-height: 46px;
+          padding: 0 17px;
+          border: 0;
+          border-radius: 999px;
+          color: #fff;
+          background: #22c55e;
+          font: 800 13px/1 Arial, sans-serif;
+          text-decoration: none;
+          box-shadow: 0 16px 38px rgba(0,0,0,.3);
+          animation: peyvandWhatsappFloat 2.8s ease-in-out infinite;
+        }
         #peyvand-social-desktop { display: none; }
         #peyvand-mobile-social-stack {
           position: fixed;
@@ -363,6 +385,13 @@
           text-decoration: none;
         }
       }
+      @keyframes peyvandWhatsappFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-4px); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #peyvand-whatsapp-fallback { animation: none; }
+      }
     `;
     document.head.append(style);
   }
@@ -402,6 +431,22 @@
       facebook.style.background = "#1877F2";
       desktop.append(instagram, tiktok, facebook);
       controls.insertBefore(desktop, languageButton);
+    }
+
+    // Falls React den WhatsApp-Button noch nicht erzeugt hat, wird derselbe Button zuverlässig ergänzt.
+    const nativeWhatsapp = document.querySelector('main a[href^="https://wa.me/"]:not(#peyvand-whatsapp-fallback)');
+    const fallbackWhatsapp = document.querySelector("#peyvand-whatsapp-fallback");
+    if (nativeWhatsapp) {
+      fallbackWhatsapp?.remove();
+    } else if (window.matchMedia("(max-width: 767px)").matches && settings.whatsapp_number && !fallbackWhatsapp) {
+      const whatsapp = document.createElement("a");
+      whatsapp.id = "peyvand-whatsapp-fallback";
+      whatsapp.href = "https://wa.me/" + String(settings.whatsapp_number).replace(/\\D/g, "");
+      whatsapp.target = "_blank";
+      whatsapp.rel = "noopener noreferrer";
+      whatsapp.setAttribute("aria-label", "PEYWAND über WhatsApp kontaktieren");
+      whatsapp.innerHTML = '<span aria-hidden="true">◔</span><span>WhatsApp</span>';
+      document.body.append(whatsapp);
     }
 
     // Auf dem Handy liegen die kleinen Social-Buttons direkt über dem WhatsApp-Button.
@@ -627,11 +672,12 @@
 
   let timer;
   function applyAll() {
-    applyTranslations();
-    arrangeMobileHero();
-    improveBeginnerJourney();
-    renderSocials();
-    renderSocialAdmin();
+    // Kontaktbuttons zuerst und unabhängig vom restlichen Seiteninhalt laden.
+    renderSocials().catch(() => {});
+    try { applyTranslations(); } catch {}
+    try { arrangeMobileHero(); } catch {}
+    try { improveBeginnerJourney(); } catch {}
+    try { renderSocialAdmin(); } catch {}
   }
   function schedule() {
     clearTimeout(timer);
