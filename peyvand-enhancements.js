@@ -89,50 +89,177 @@
     return element;
   }
 
+  function injectSocialStyles() {
+    if (document.querySelector("#peyvand-social-styles")) return;
+    const style = document.createElement("style");
+    style.id = "peyvand-social-styles";
+    style.textContent = `
+      #peyvand-social-desktop {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-right: 2px;
+      }
+      #peyvand-social-desktop a,
+      #peyvand-social-desktop span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 30px;
+        height: 30px;
+        padding: 0 7px;
+        border: 0;
+        border-radius: 999px;
+        color: #fff;
+        font: 800 9px/1 Arial, sans-serif;
+        letter-spacing: .04em;
+        text-decoration: none;
+        box-shadow: none;
+        transform: none;
+        animation: none;
+      }
+      #peyvand-social-mobile-menu {
+        display: none;
+      }
+      #peyvand-mobile-menu-button {
+        display: none;
+      }
+      @media (max-width: 767px) {
+        #peyvand-social-desktop { display: none; }
+        #peyvand-mobile-menu-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          border: 1px solid rgba(255,255,255,.2);
+          border-radius: 999px;
+          background: rgba(255,255,255,.08);
+          color: #fff;
+          font-size: 21px;
+          line-height: 1;
+          cursor: pointer;
+        }
+        #peyvand-social-mobile-menu {
+          position: fixed;
+          inset: 0;
+          z-index: 100;
+          display: none;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding: 20px;
+          background: rgba(3,18,15,.72);
+          backdrop-filter: blur(10px);
+        }
+        #peyvand-social-mobile-menu.is-open { display: flex; }
+        #peyvand-social-mobile-panel {
+          width: 100%;
+          padding: 20px 16px 16px;
+          border: 1px solid rgba(216,184,94,.3);
+          border-radius: 24px;
+          background: #08251f;
+          box-shadow: 0 20px 60px rgba(0,0,0,.45);
+        }
+        #peyvand-social-mobile-close {
+          float: right;
+          border: 0;
+          background: transparent;
+          color: #d8b85e;
+          font-size: 24px;
+          cursor: pointer;
+        }
+        #peyvand-social-mobile-links {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 8px;
+          clear: both;
+          padding-top: 16px;
+        }
+        #peyvand-social-mobile-links a,
+        #peyvand-social-mobile-links span {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 42px;
+          border-radius: 12px;
+          color: #fff;
+          font: 800 10px/1 Arial, sans-serif;
+          letter-spacing: .04em;
+          text-decoration: none;
+        }
+      }
+    `;
+    document.head.append(style);
+  }
+
+  function styleSocialButton(element) {
+    Object.assign(element.style, {
+      color: "white",
+      textDecoration: "none",
+      fontFamily: "Arial, sans-serif",
+      fontWeight: "800",
+      background: "#1877F2",
+      boxShadow: "none",
+      transform: "none",
+      animation: "none"
+    });
+  }
+
   async function renderSocials() {
-    if (document.querySelector("#peyvand-social-buttons")) return;
-    const wrapper = document.createElement("div");
-    wrapper.id = "peyvand-social-buttons";
-    Object.assign(wrapper.style, {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      flexWrap: "wrap",
-      gap: "10px",
-      padding: "10px 16px",
-      background: "#062b23",
-      borderBottom: "1px solid rgba(216,184,94,.25)",
-      position: "relative",
-      zIndex: "30"
-    });
-    document.body.prepend(wrapper);
+    if (document.querySelector("#peyvand-social-desktop")) return;
+    const header = document.querySelector("header");
+    const languageButton = header?.querySelector('button[role="combobox"]');
+    const controls = languageButton?.parentElement;
+    if (!header || !controls) return;
+    injectSocialStyles();
     const settings = await getSettings();
-    const instagram = socialButton("INSTAGRAM", settings.instagram_url, "");
-    const tiktok = socialButton("TIKTOK", settings.tiktok_url, "");
-    const facebook = socialButton("FACEBOOK", settings.facebook_url, "");
-    [instagram, tiktok, facebook].forEach(button => {
-      Object.assign(button.style, {
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "38px",
-        minWidth: "100px",
-        borderRadius: "12px",
-        padding: "8px 14px",
-        color: "white",
-        fontSize: "11px",
-        fontWeight: "800",
-        letterSpacing: ".06em",
-        textDecoration: "none",
-        boxShadow: "0 5px 14px rgba(0,0,0,.2)",
-        transform: "none",
-        animation: "none"
-      });
-    });
+    const desktop = document.createElement("div");
+    desktop.id = "peyvand-social-desktop";
+    const instagram = socialButton("IG", settings.instagram_url, "");
+    const tiktok = socialButton("TK", settings.tiktok_url, "");
+    const facebook = socialButton("FB", settings.facebook_url, "");
+    [instagram, tiktok, facebook].forEach(styleSocialButton);
     instagram.style.background = "linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)";
     tiktok.style.background = "#050505";
     facebook.style.background = "#1877F2";
-    wrapper.append(instagram, tiktok, facebook);
+    desktop.append(instagram, tiktok, facebook);
+    controls.insertBefore(desktop, languageButton);
+
+    const mobileButton = document.createElement("button");
+    mobileButton.id = "peyvand-mobile-menu-button";
+    mobileButton.type = "button";
+    mobileButton.setAttribute("aria-label", "Menü öffnen");
+    mobileButton.setAttribute("aria-expanded", "false");
+    mobileButton.textContent = "☰";
+    controls.append(mobileButton);
+
+    const mobileMenu = document.createElement("div");
+    mobileMenu.id = "peyvand-social-mobile-menu";
+    mobileMenu.innerHTML = '<div id="peyvand-social-mobile-panel"><button id="peyvand-social-mobile-close" type="button" aria-label="Menü schließen">×</button><p style="margin:0;color:#f0d27c;font:700 14px Arial,sans-serif">Social Media</p><div id="peyvand-social-mobile-links"></div></div>';
+    const mobileLinks = mobileMenu.querySelector("#peyvand-social-mobile-links");
+    const mobileInstagram = socialButton("Instagram", settings.instagram_url, "");
+    const mobileTiktok = socialButton("TikTok", settings.tiktok_url, "");
+    const mobileFacebook = socialButton("Facebook", settings.facebook_url, "");
+    [mobileInstagram, mobileTiktok, mobileFacebook].forEach(styleSocialButton);
+    mobileInstagram.style.background = "linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)";
+    mobileTiktok.style.background = "#050505";
+    mobileFacebook.style.background = "#1877F2";
+    mobileLinks.append(mobileInstagram, mobileTiktok, mobileFacebook);
+    document.body.append(mobileMenu);
+
+    const closeMenu = () => {
+      mobileMenu.classList.remove("is-open");
+      mobileButton.setAttribute("aria-expanded", "false");
+    };
+    mobileButton.addEventListener("click", event => {
+      event.stopPropagation();
+      mobileMenu.classList.toggle("is-open");
+      mobileButton.setAttribute("aria-expanded", mobileMenu.classList.contains("is-open") ? "true" : "false");
+    });
+    mobileMenu.querySelector("#peyvand-social-mobile-close").addEventListener("click", closeMenu);
+    mobileMenu.addEventListener("click", event => {
+      if (event.target === mobileMenu) closeMenu();
+    });
   }
 
   function accessToken() {
