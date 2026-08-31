@@ -139,8 +139,11 @@
       "#peyvand-inapp-note a{background:#e8c96f;color:#10271f;text-decoration:none}",
       "#peyvand-inapp-note button{background:rgba(255,255,255,.1);color:#fff}",
       "#peyvand-germany-admin textarea{min-height:110px;resize:vertical}",
+      "#peyvand-germany-chip{grid-column:span 2;cursor:pointer}",
       "#peyvand-team-admin .member-editor{margin-top:14px;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:rgba(255,255,255,.04);padding:15px}",
-      "@media(min-width:700px){#deutschland-hilfe .de-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#peyvand-official-team .team-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}"
+      "@media(min-width:640px){#peyvand-germany-chip{grid-column:auto}}",
+      "@media(min-width:700px){#deutschland-hilfe .de-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#peyvand-official-team .team-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}",
+      "@media(min-width:1024px){.hero-luxury .peyvand-trust-grid{grid-template-columns:repeat(6,minmax(0,1fr))!important}}"
     ].join("");
     document.head.append(style);
   }
