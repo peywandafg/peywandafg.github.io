@@ -302,6 +302,10 @@
         display: none;
       }
       @media (max-width: 767px) {
+        main > a[href^="https://wa.me/"] {
+          right: 20px !important;
+          left: auto !important;
+        }
         #peyvand-whatsapp-fallback {
           position: fixed;
           right: 20px;
@@ -482,6 +486,9 @@
       const facebook = socialButton("Facebook", settings.facebook_url, "");
       [tiktok, instagram, facebook].forEach(styleSocialButton);
       tiktok.style.background = "#050505";
+      tiktok.style.width = "40px";
+      tiktok.style.height = "40px";
+      tiktok.style.minWidth = "40px";
       instagram.style.background = "linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)";
       facebook.style.background = "#1877F2";
       stack.append(tiktok, instagram, facebook);
