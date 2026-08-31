@@ -486,9 +486,11 @@
       const facebook = socialButton("Facebook", settings.facebook_url, "");
       [tiktok, instagram, facebook].forEach(styleSocialButton);
       tiktok.style.background = "#050505";
-      tiktok.style.width = "40px";
-      tiktok.style.height = "40px";
-      tiktok.style.minWidth = "40px";
+      [tiktok, instagram, facebook].forEach(button => {
+        button.style.width = "40px";
+        button.style.height = "40px";
+        button.style.minWidth = "40px";
+      });
       instagram.style.background = "linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)";
       facebook.style.background = "#1877F2";
       stack.append(tiktok, instagram, facebook);
