@@ -211,10 +211,24 @@
           z-index: 2;
         }
         .hero-luxury .peyvand-mobile-hero-logo .logo-float-tag--afg {
-          left: 14px;
+          top: 14px !important;
+          right: auto !important;
+          bottom: auto !important;
+          left: 14px !important;
+          color: #fff !important;
+          border-color: rgba(255,255,255,.55) !important;
+          background: linear-gradient(135deg,#111 0 33%,#b91c1c 33% 66%,#166534 66%) !important;
+          box-shadow: 0 8px 22px rgba(0,0,0,.38) !important;
         }
         .hero-luxury .peyvand-mobile-hero-logo .logo-float-tag--deu {
-          right: 14px;
+          top: auto !important;
+          right: 14px !important;
+          bottom: 14px !important;
+          left: auto !important;
+          color: #fff !important;
+          border-color: rgba(255,221,90,.7) !important;
+          background: linear-gradient(135deg,#111 0 33%,#c81e1e 33% 66%,#e9b949 66%) !important;
+          box-shadow: 0 8px 22px rgba(0,0,0,.38) !important;
         }
       }
       #peyvand-mobile-social-stack a,
