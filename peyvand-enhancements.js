@@ -167,6 +167,24 @@
       #peyvand-mobile-social-stack {
         display: none;
       }
+      #kontakt aside {
+        color: #ffffff !important;
+        background: #0d3b2e !important;
+      }
+      #kontakt aside > p:first-child {
+        color: #f0cf72 !important;
+      }
+      #kontakt aside p:not(:first-child) {
+        color: #f7fbf8 !important;
+      }
+      #kontakt aside a {
+        color: #f5d77f !important;
+        text-decoration-color: rgba(245,215,127,.55) !important;
+      }
+      #kontakt aside a:hover,
+      #kontakt aside a:focus-visible {
+        color: #ffffff !important;
+      }
       .hero-luxury .trust-chip {
         cursor: pointer;
         transition: border-color .2s, background-color .2s, color .2s, box-shadow .2s, transform .15s;
