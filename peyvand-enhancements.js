@@ -79,12 +79,12 @@
   function socialIcon(name) {
     const key = name.toLowerCase();
     if (key.includes("instagram") || key === "ig") {
-      return '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1"></circle></svg>';
+      return '<svg class="social-icon social-icon-instagram" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1"></circle></svg>';
     }
     if (key.includes("tiktok") || key === "tk") {
-      return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3v11.2a4.8 4.8 0 1 1-4-4.74"></path><path d="M15 3c.45 2.4 1.85 4.1 4.5 4.7"></path></svg>';
+      return '<svg class="social-icon social-icon-tiktok" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3v11.2a4.8 4.8 0 1 1-4-4.74"></path><path d="M15 3c.45 2.4 1.85 4.1 4.5 4.7"></path></svg>';
     }
-    return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3.3 0-5 1.9-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1Z"></path></svg>';
+    return '<svg class="social-icon social-icon-facebook" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3.3 0-5 1.9-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1Z"></path></svg>';
   }
 
   function socialButton(name, url, classes) {
@@ -181,18 +181,24 @@
         animation: none !important;
       }
       #peyvand-mobile-social-stack svg {
-        display: none;
+        display: block !important;
+        width: 21px;
+        height: 21px;
+      }
+      #peyvand-mobile-social-stack .social-icon-instagram,
+      #peyvand-mobile-social-stack .social-icon-tiktok {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.9;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      #peyvand-mobile-social-stack .social-icon-facebook {
+        fill: currentColor;
+        stroke: none;
       }
       #peyvand-mobile-social-stack .peyvand-social-label {
-        display: block !important;
-        width: auto;
-        height: auto;
-        overflow: visible;
-        clip: auto;
-        position: static;
-        font: 800 7px/1 Arial, sans-serif;
-        letter-spacing: 0;
-        white-space: nowrap;
+        display: none !important;
       }
       #peyvand-mobile-menu-button {
         display: none;
