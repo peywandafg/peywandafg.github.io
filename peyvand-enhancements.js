@@ -164,6 +164,33 @@
       #peyvand-mobile-social-stack {
         display: none;
       }
+      @media (max-width: 767px) {
+        .hero-luxury .peyvand-mobile-hero-logo {
+          width: 100%;
+          padding-left: 0;
+          margin-top: 25px;
+          margin-bottom: 4px;
+        }
+        .hero-luxury .peyvand-mobile-hero-logo .logo-card-3d {
+          border-radius: 26px;
+          padding: 8px;
+          box-shadow: 0 24px 55px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.2);
+        }
+        .hero-luxury .peyvand-mobile-hero-logo .logo-orbit {
+          display: none;
+        }
+        .hero-luxury .peyvand-mobile-hero-logo .logo-float-tag {
+          top: 12px;
+          bottom: auto;
+          z-index: 2;
+        }
+        .hero-luxury .peyvand-mobile-hero-logo .logo-float-tag--afg {
+          left: 14px;
+        }
+        .hero-luxury .peyvand-mobile-hero-logo .logo-float-tag--deu {
+          right: 14px;
+        }
+      }
       #peyvand-mobile-social-stack a,
       #peyvand-mobile-social-stack span {
         display: flex;
@@ -359,6 +386,32 @@
     }
   }
 
+  let heroLogoHome;
+  let heroLogoNext;
+
+  function arrangeMobileHero() {
+    const grid = document.querySelector(".hero-luxury > .relative.mx-auto.grid");
+    const text = grid?.firstElementChild;
+    const logo = grid?.querySelector(".logo-stage");
+    const heading = text?.querySelector("h1");
+    if (!grid || !text || !logo || !heading) return;
+
+    if (!heroLogoHome) {
+      heroLogoHome = grid;
+      heroLogoNext = logo.nextSibling;
+    }
+
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      if (logo.parentElement !== text) {
+        heading.insertAdjacentElement("afterend", logo);
+        logo.classList.add("peyvand-mobile-hero-logo");
+      }
+    } else if (logo.parentElement !== heroLogoHome) {
+      heroLogoHome.insertBefore(logo, heroLogoNext);
+      logo.classList.remove("peyvand-mobile-hero-logo");
+    }
+  }
+
   function accessToken() {
     for (let index = 0; index < localStorage.length; index++) {
       const key = localStorage.key(index);
@@ -421,6 +474,7 @@
   let timer;
   function applyAll() {
     applyTranslations();
+    arrangeMobileHero();
     renderSocials();
     renderSocialAdmin();
   }
