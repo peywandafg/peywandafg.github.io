@@ -401,6 +401,159 @@
     });
   }
 
+
+  const structureCopy = {
+    de: {
+      contactKicker: "Persönliche Beratung",
+      contactTitle: "Direkt aus Deutschland für dich da.",
+      contactBody: "Nach deinem Profil prüfen wir deine Angaben persönlich und erklären dir verständlich, welcher nächste Schritt zu deinem Ziel passt.",
+      contactPerson: "Dein Ansprechpartner",
+      whatsapp: "Über WhatsApp kontaktieren",
+      germanyTitle: "Hilfe in Deutschland",
+      germanyBody: "Deutschunterricht sowie Hilfe beim Verstehen von Briefen und Formularen.",
+      germanyAction: "Mehr erfahren"
+    },
+    en: {
+      contactKicker: "Personal advice",
+      contactTitle: "Direct support from Germany.",
+      contactBody: "After receiving your profile, we personally review your information and clearly explain the next step that fits your goal.",
+      contactPerson: "Your contact person",
+      whatsapp: "Contact via WhatsApp",
+      germanyTitle: "Help in Germany",
+      germanyBody: "German lessons and help understanding letters and forms.",
+      germanyAction: "Learn more"
+    },
+    fa: {
+      contactKicker: "مشاوره شخصی",
+      contactTitle: "همراهی مستقیم از آلمان.",
+      contactBody: "پس از دریافت پروفایل، اطلاعات شما را شخصاً بررسی می‌کنیم و گام بعدی مناسب هدفتان را به زبان ساده توضیح می‌دهیم.",
+      contactPerson: "مسئول تماس شما",
+      whatsapp: "تماس از طریق واتساپ",
+      germanyTitle: "کمک در آلمان",
+      germanyBody: "آموزش زبان آلمانی و کمک برای فهم نامه‌ها و فورم‌ها.",
+      germanyAction: "اطلاعات بیشتر"
+    },
+    ps: {
+      contactKicker: "شخصي مشوره",
+      contactTitle: "له آلمان څخه مستقیمه مرسته.",
+      contactBody: "ستاسې د پروفایل له ترلاسه کولو وروسته معلومات په شخصي ډول ګورو او ستاسې موخې ته مناسب راتلونکی ګام په ساده ژبه تشریح کوو.",
+      contactPerson: "ستاسې د اړیکې مسئول",
+      whatsapp: "د واټساپ له لارې اړیکه",
+      germanyTitle: "په آلمان کې مرسته",
+      germanyBody: "د آلماني ژبې درسونه او د لیکونو او فورمو په پوهېدو کې مرسته.",
+      germanyAction: "نور معلومات"
+    }
+  };
+
+  function safeText(value) {
+    return String(value || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+
+  function ensureStructureStyles() {
+    if (document.querySelector("#peyvand-structure-styles")) return;
+    const style = document.createElement("style");
+    style.id = "peyvand-structure-styles";
+    style.textContent = [
+      "#peyvand-contact{background:linear-gradient(145deg,#f5f0e4,#eef3ed);color:#14392e}",
+      "#peyvand-contact .contact-wrap{max-width:850px;margin:auto;text-align:center}",
+      "#peyvand-contact .contact-card{margin-top:28px;border-radius:26px;background:#0b342a;color:#fff;padding:25px;box-shadow:0 20px 55px rgba(10,43,35,.18)}",
+      "#peyvand-contact .contact-card strong{display:block;color:#e8cb78;font-family:Georgia,serif;font-size:23px}",
+      "#peyvand-contact .contact-card a{display:inline-flex;margin-top:17px;border-radius:999px;background:#e3c66f;color:#102b23;padding:11px 17px;font-weight:800;text-decoration:none}",
+      "#peyvand-de-summary{border-color:rgba(225,188,98,.24)}",
+      "@media(max-width:767px){.hero-luxury .max-w-2xl>.mt-9.flex{display:none!important}.hero-luxury .peyvand-trust-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}.hero-luxury .peyvand-trust-grid .trust-chip{grid-column:auto!important;min-height:54px!important;padding:12px 8px!important;font-size:11px!important}.hero-luxury .peyvand-trust-grid .trust-chip:first-child{grid-column:span 2!important;min-height:68px!important;border-color:rgba(225,188,98,.58)!important;background:rgba(225,188,98,.12)!important;font-size:14px!important}.hero-luxury #peyvand-family-chip,.hero-luxury #peyvand-germany-chip{opacity:.84;min-height:48px!important;font-size:10px!important}#angebote,#wege,#ablauf,#bewerbung,#peyvand-contact,#ueber-uns,#peyvand-official-team,#deutschland-hilfe{padding-top:72px!important;padding-bottom:72px!important}#peyvand-official-team .official-notice p{font-size:13px!important;line-height:1.65!important}#peyvand-official-team .team-card{padding:18px!important}#peyvand-official-team .team-card p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}}"
+    ].join("");
+    document.head.append(style);
+  }
+
+  async function renderContactSection() {
+    if (location.pathname.startsWith("/admin")) return;
+    const settings = await getSettings();
+    const copy = structureCopy[language()];
+    const main = document.querySelector("main");
+    if (!main) return;
+    let section = document.querySelector("#peyvand-contact");
+    if (!section) {
+      section = document.createElement("section");
+      section.id = "peyvand-contact";
+      section.className = "scroll-mt-24 px-5 py-20 sm:px-8";
+      main.append(section);
+    }
+    const name = settings.contact_name || settings.founder_name || "Muhammad Ali Tajikzei";
+    const email = settings.contact_email || "peywand.afg@gmail.com";
+    const phone = String(settings.whatsapp_number || "").replace(/\D/g,"");
+    section.innerHTML =
+      '<div class="contact-wrap">' +
+        '<p class="section-kicker">' + copy.contactKicker + '</p>' +
+        '<h2 class="mt-4 font-serif text-4xl leading-[1.08] tracking-[-.025em] sm:text-5xl">' + copy.contactTitle + '</h2>' +
+        '<p class="mt-5 text-base leading-8 text-[#5b6d65]">' + copy.contactBody + '</p>' +
+        '<div class="contact-card"><span>' + copy.contactPerson + '</span><strong>' + safeText(name) + '</strong>' +
+        '<p class="mt-2 text-sm text-[#d1ded8]"><a style="margin-top:0;background:none;color:#d1ded8;padding:0" href="mailto:' + safeText(email) + '">' + safeText(email) + '</a></p>' +
+        (phone ? '<a href="https://wa.me/' + phone + '" target="_blank" rel="noopener noreferrer">' + copy.whatsapp + '</a>' : '') +
+        '</div>' +
+      '</div>';
+  }
+
+  function addGermanySummaryCard() {
+    const grid = document.querySelector("#wege .peyvand-path-grid");
+    if (!grid) return;
+    let card = document.querySelector("#peyvand-de-summary");
+    if (!card) {
+      card = document.createElement("article");
+      card.id = "peyvand-de-summary";
+      card.className = "journey-path rounded-[2rem] p-6";
+      card.innerHTML = '<span class="text-xs font-black tracking-[.18em] text-[#dfbd67]">05</span><h3 class="mt-7 font-serif text-2xl text-[#fff7e8]"></h3><p class="mt-3 text-sm leading-7 text-[#b9cbc3]"></p><a href="#deutschland-hilfe" class="mt-6 inline-flex items-center text-sm font-bold text-[#efd07a]"></a>';
+      grid.append(card);
+    }
+    const copy = structureCopy[language()];
+    setText(card.querySelector("h3"), copy.germanyTitle);
+    setText(card.querySelector("p"), copy.germanyBody);
+    setText(card.querySelector("a"), copy.germanyAction);
+  }
+
+  function orderHeroChips() {
+    const grid = document.querySelector(".hero-luxury .peyvand-trust-grid");
+    if (!grid) return;
+    const chips = [...grid.querySelectorAll(".trust-chip")];
+    const languageChip = chips.find(chip => chip.dataset.target === "#peyvand-sprache") || chips[0];
+    const trainingChip = chips.find(chip => chip.dataset.target === "#peyvand-ausbildung");
+    const studyChip = chips.find(chip => chip.dataset.target === "#peyvand-studium");
+    const companyChip = chips.find(chip => chip.dataset.target === "#unternehmen");
+    const familyChip = document.querySelector("#peyvand-family-chip");
+    const germanyChip = document.querySelector("#peyvand-germany-chip");
+    [languageChip, trainingChip, studyChip, companyChip, familyChip, germanyChip].filter(Boolean).forEach(chip => grid.append(chip));
+  }
+
+  function reorderMobileSections() {
+    if (!window.matchMedia("(max-width: 767px)").matches) return;
+    const main = document.querySelector("main");
+    const footer = main?.querySelector("footer");
+    if (!main || !footer) return;
+    const ordered = [
+      "#angebote",
+      "#wege",
+      "#ablauf",
+      "#bewerbung",
+      "#peyvand-contact",
+      "#ueber-uns",
+      "#peyvand-official-team",
+      "#deutschland-hilfe",
+      "#unternehmen"
+    ];
+    ordered.forEach(selector => {
+      const section = document.querySelector(selector);
+      if (section) main.insertBefore(section, footer);
+    });
+  }
+
+  async function renderStructuredPage() {
+    if (location.pathname.startsWith("/admin")) return;
+    ensureStructureStyles();
+    await renderContactSection();
+    addGermanySummaryCard();
+    orderHeroChips();
+    reorderMobileSections();
+  }
+
   let timer;
   function apply() {
     renderGermanySection();
@@ -408,6 +561,7 @@
     renderInAppNotice();
     renderGermanyAdmin();
     renderTeamAdmin();
+    renderStructuredPage();
   }
   function schedule() {
     clearTimeout(timer);
