@@ -607,7 +607,7 @@
       age_range: ["Altersgruppe", {"":"Bitte wählen","under_18":"Unter 18","18_24":"18–24","25_34":"25–34","35_plus":"35 oder älter"}],
       education_level: ["Bildungsstand", {"":"Bitte wählen","school":"Schule","high_school":"Schulabschluss","vocational":"Berufsausbildung","university":"Universität","other":"Sonstiges"}],
       german_level: ["Deutschniveau", {"A0":"A0 – noch nicht begonnen"}],
-      pathway: ["Mein Ziel", {"":"Bitte wählen","ausbildung":"Ausbildung","studium":"Studium","arbeit":"Arbeit","familiennachzug":"B1 für Familiennachzug","mitarbeit":"Als Lehrkraft / Unterstützer mitarbeiten","unsicher":"Noch unsicher"}],
+      pathway: ["Mein Ziel", {"":"Bitte wählen","ausbildung":"Ausbildung","studium":"Studium","arbeit":"Arbeit","familiennachzug":"B1 für Familiennachzug","private_lessons":"Privater Deutschunterricht","paperwork_help":"Hilfe bei Briefen und Formularen","mitarbeit":"Als Lehrkraft / Unterstützer mitarbeiten","unsicher":"Noch unsicher"}],
       work_experience: ["Berufserfahrung (optional)", "In welchen Bereichen hast du gearbeitet?"],
       preferred_language: ["Bevorzugte Sprache"],
       message: ["Nachricht (optional)", "Was ist dir besonders wichtig?"],
@@ -619,7 +619,7 @@
       age_range: ["Age group", {"":"Please select","under_18":"Under 18","18_24":"18–24","25_34":"25–34","35_plus":"35 or older"}],
       education_level: ["Education level", {"":"Please select","school":"School","high_school":"High-school diploma","vocational":"Vocational qualification","university":"University","other":"Other"}],
       german_level: ["German level", {"A0":"A0 – not started yet"}],
-      pathway: ["My goal", {"":"Please select","ausbildung":"Vocational training","studium":"University studies","arbeit":"Employment","familiennachzug":"B1 for family reunification","mitarbeit":"Work with us as a teacher / supporter","unsicher":"Not sure yet"}],
+      pathway: ["My goal", {"":"Please select","ausbildung":"Vocational training","studium":"University studies","arbeit":"Employment","familiennachzug":"B1 for family reunification","private_lessons":"Private German lessons","paperwork_help":"Help with letters and forms","mitarbeit":"Work with us as a teacher / supporter","unsicher":"Not sure yet"}],
       work_experience: ["Work experience (optional)", "Which fields have you worked in?"],
       preferred_language: ["Preferred contact language"],
       message: ["Message (optional)", "What is especially important to you?"],
@@ -631,7 +631,7 @@
       age_range: ["گروه سنی", {"":"انتخاب کنید","under_18":"کمتر از ۱۸ سال","18_24":"۱۸–۲۴","25_34":"۲۵–۳۴","35_plus":"۳۵ سال یا بیشتر"}],
       education_level: ["سطح تحصیلات", {"":"انتخاب کنید","school":"مکتب","high_school":"فارغ مکتب","vocational":"آموزش مسلکی","university":"دانشگاه","other":"سایر"}],
       german_level: ["سطح زبان آلمانی", {"A0":"A0 – هنوز آغاز نکرده‌ام"}],
-      pathway: ["هدف من", {"":"انتخاب کنید","ausbildung":"آوسبیلدونگ","studium":"تحصیل","arbeit":"کار","familiennachzug":"B1 برای پیوستن خانواده","mitarbeit":"همکاری به‌عنوان آموزگار یا حامی","unsicher":"هنوز مطمئن نیستم"}],
+      pathway: ["هدف من", {"":"انتخاب کنید","ausbildung":"آوسبیلدونگ","studium":"تحصیل","arbeit":"کار","familiennachzug":"B1 برای پیوستن خانواده","private_lessons":"آموزش خصوصی زبان آلمانی","paperwork_help":"کمک برای نامه‌ها و فورم‌ها","mitarbeit":"همکاری به‌عنوان آموزگار یا حامی","unsicher":"هنوز مطمئن نیستم"}],
       work_experience: ["تجربه کاری (اختیاری)", "در کدام بخش‌ها کار کرده‌اید؟"],
       preferred_language: ["زبان ترجیحی برای تماس"],
       message: ["پیام (اختیاری)", "چه چیزی برای شما اهمیت ویژه دارد؟"],
@@ -643,7 +643,7 @@
       age_range: ["د عمر ډله", {"":"مهرباني وکړئ وټاکئ","under_18":"له ۱۸ کلونو کم","18_24":"۱۸–۲۴","25_34":"۲۵–۳۴","35_plus":"۳۵ کاله یا ډېر"}],
       education_level: ["د زده کړو کچه", {"":"مهرباني وکړئ وټاکئ","school":"ښوونځی","high_school":"د ښوونځي فراغت","vocational":"مسلکي زده کړې","university":"پوهنتون","other":"نور"}],
       german_level: ["د آلماني ژبې کچه", {"A0":"A0 – لا مې نه ده پیل کړې"}],
-      pathway: ["زما موخه", {"":"مهرباني وکړئ وټاکئ","ausbildung":"مسلکي روزنه (آوسبیلدونګ)","studium":"پوهنتوني زده کړې","arbeit":"کار","familiennachzug":"د کورنۍ یوځای کېدو لپاره B1","mitarbeit":"د ښوونکي یا ملاتړي په توګه همکاري","unsicher":"لا ډاډه نه یم"}],
+      pathway: ["زما موخه", {"":"مهرباني وکړئ وټاکئ","ausbildung":"مسلکي روزنه (آوسبیلدونګ)","studium":"پوهنتوني زده کړې","arbeit":"کار","familiennachzug":"د کورنۍ یوځای کېدو لپاره B1","private_lessons":"خصوصي آلماني درسونه","paperwork_help":"د لیکونو او فورمو مرسته","mitarbeit":"د ښوونکي یا ملاتړي په توګه همکاري","unsicher":"لا ډاډه نه یم"}],
       work_experience: ["کاري تجربه (اختیاري)", "تاسې په کومو برخو کې کار کړی؟"],
       preferred_language: ["د اړیکې غوره ژبه"],
       message: ["پیغام (اختیاري)", "تاسې ته کومه موضوع ډېره مهمه ده؟"],
@@ -786,7 +786,7 @@
       if (copy.levels[index]) setText(label, copy.levels[index]);
     });
 
-    const pathCards = [...section.querySelectorAll(".journey-path")].filter(card => card.id !== "peyvand-familie");
+    const pathCards = [...section.querySelectorAll(".journey-path")].filter(card => card.id !== "peyvand-familie" && card.id !== "peyvand-de-summary").slice(0, 3);
     const ids = ["peyvand-ausbildung", "peyvand-studium", "peyvand-arbeit"];
     pathCards.forEach((card, index) => {
       card.id = ids[index];
