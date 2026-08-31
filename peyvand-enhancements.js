@@ -164,6 +164,25 @@
       #peyvand-mobile-social-stack {
         display: none;
       }
+      @media (max-width: 767px) {
+        main > a[href^="https://wa.me/"] {
+          right: 20px !important;
+          left: auto !important;
+          bottom: 18px !important;
+          z-index: 90 !important;
+          min-height: 48px !important;
+          padding: 0 16px !important;
+          border: 2px solid rgba(255,255,255,.75) !important;
+          box-shadow: 0 10px 28px rgba(0,0,0,.3), 0 0 0 4px rgba(34,197,94,.12) !important;
+          transform: none !important;
+          animation: none !important;
+          transition: background-color .2s, box-shadow .2s !important;
+        }
+        main[dir="rtl"] > a[href^="https://wa.me/"] {
+          left: 20px !important;
+          right: auto !important;
+        }
+      }
       #peyvand-mobile-social-stack a,
       #peyvand-mobile-social-stack span {
         display: flex;
