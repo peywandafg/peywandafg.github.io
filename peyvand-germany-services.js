@@ -505,9 +505,9 @@
       grid.append(card);
     }
     const copy = structureCopy[language()];
-    setText(card.querySelector("h3"), copy.germanyTitle);
-    setText(card.querySelector("p"), copy.germanyBody);
-    setText(card.querySelector("a"), copy.germanyAction);
+    card.querySelector("h3").textContent = copy.germanyTitle;
+    card.querySelector("p").textContent = copy.germanyBody;
+    card.querySelector("a").textContent = copy.germanyAction;
   }
 
   function orderHeroChips() {
