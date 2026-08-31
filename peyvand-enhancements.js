@@ -157,14 +157,47 @@
         overflow: hidden;
         clip: rect(0,0,0,0);
       }
-      #peyvand-social-mobile-menu {
+      #peyvand-social-mobile-menu,
+      #peyvand-mobile-menu-button {
+        display: none !important;
+      }
+      #peyvand-mobile-social-stack {
         display: none;
+      }
+      #peyvand-mobile-social-stack a,
+      #peyvand-mobile-social-stack span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        min-width: 38px !important;
+        padding: 0 !important;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,.2);
+        color: #fff;
+        box-shadow: 0 8px 22px rgba(0,0,0,.25);
+        transform: none !important;
+        animation: none !important;
+      }
+      #peyvand-mobile-social-stack svg {
+        width: 18px;
+        height: 18px;
       }
       #peyvand-mobile-menu-button {
         display: none;
       }
       @media (max-width: 767px) {
         #peyvand-social-desktop { display: none; }
+        #peyvand-mobile-social-stack {
+          position: fixed;
+          bottom: 76px;
+          z-index: 89;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          align-items: center;
+        }
         #peyvand-mobile-menu-button {
           position: fixed;
           right: 18px;
@@ -257,60 +290,47 @@
   }
 
   async function renderSocials() {
-    if (document.querySelector("#peyvand-social-desktop")) return;
     const header = document.querySelector("header");
     const languageButton = header?.querySelector('button[role="combobox"]');
     const controls = languageButton?.parentElement;
     if (!header || !controls) return;
     injectSocialStyles();
     const settings = await getSettings();
-    const desktop = document.createElement("div");
-    desktop.id = "peyvand-social-desktop";
-    const instagram = socialButton("IG", settings.instagram_url, "");
-    const tiktok = socialButton("TK", settings.tiktok_url, "");
-    const facebook = socialButton("FB", settings.facebook_url, "");
-    [instagram, tiktok, facebook].forEach(styleSocialButton);
-    instagram.style.background = "linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)";
-    tiktok.style.background = "#050505";
-    facebook.style.background = "#1877F2";
-    desktop.append(instagram, tiktok, facebook);
-    controls.insertBefore(desktop, languageButton);
 
-    const mobileButton = document.createElement("button");
-    mobileButton.id = "peyvand-mobile-menu-button";
-    mobileButton.type = "button";
-    mobileButton.setAttribute("aria-label", "Menü öffnen");
-    mobileButton.setAttribute("aria-expanded", "false");
-    mobileButton.textContent = "☰";
-    document.body.append(mobileButton);
+    if (!document.querySelector("#peyvand-social-desktop")) {
+      const desktop = document.createElement("div");
+      desktop.id = "peyvand-social-desktop";
+      const instagram = socialButton("IG", settings.instagram_url, "");
+      const tiktok = socialButton("TK", settings.tiktok_url, "");
+      const facebook = socialButton("FB", settings.facebook_url, "");
+      [instagram, tiktok, facebook].forEach(styleSocialButton);
+      instagram.style.background = "linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)";
+      tiktok.style.background = "#050505";
+      facebook.style.background = "#1877F2";
+      desktop.append(instagram, tiktok, facebook);
+      controls.insertBefore(desktop, languageButton);
+    }
 
-    const mobileMenu = document.createElement("div");
-    mobileMenu.id = "peyvand-social-mobile-menu";
-    mobileMenu.innerHTML = '<div id="peyvand-social-mobile-panel"><button id="peyvand-social-mobile-close" type="button" aria-label="Menü schließen">×</button><p style="margin:0;color:#f0d27c;font:700 14px Arial,sans-serif">Social Media</p><div id="peyvand-social-mobile-links"></div></div>';
-    const mobileLinks = mobileMenu.querySelector("#peyvand-social-mobile-links");
-    const mobileInstagram = socialButton("Instagram", settings.instagram_url, "");
-    const mobileTiktok = socialButton("TikTok", settings.tiktok_url, "");
-    const mobileFacebook = socialButton("Facebook", settings.facebook_url, "");
-    [mobileInstagram, mobileTiktok, mobileFacebook].forEach(styleSocialButton);
-    mobileInstagram.style.background = "linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)";
-    mobileTiktok.style.background = "#050505";
-    mobileFacebook.style.background = "#1877F2";
-    mobileLinks.append(mobileInstagram, mobileTiktok, mobileFacebook);
-    document.body.append(mobileMenu);
-
-    const closeMenu = () => {
-      mobileMenu.classList.remove("is-open");
-      mobileButton.setAttribute("aria-expanded", "false");
-    };
-    mobileButton.addEventListener("click", event => {
-      event.stopPropagation();
-      mobileMenu.classList.toggle("is-open");
-      mobileButton.setAttribute("aria-expanded", mobileMenu.classList.contains("is-open") ? "true" : "false");
-    });
-    mobileMenu.querySelector("#peyvand-social-mobile-close").addEventListener("click", closeMenu);
-    mobileMenu.addEventListener("click", event => {
-      if (event.target === mobileMenu) closeMenu();
-    });
+    // Auf dem Handy liegen die kleinen Social-Buttons direkt über dem WhatsApp-Button.
+    const oldMenu = document.querySelector("#peyvand-social-mobile-menu");
+    const oldButton = document.querySelector("#peyvand-mobile-menu-button");
+    oldMenu?.remove();
+    oldButton?.remove();
+    if (window.matchMedia("(max-width: 767px)").matches && !document.querySelector("#peyvand-mobile-social-stack")) {
+      const stack = document.createElement("div");
+      stack.id = "peyvand-mobile-social-stack";
+      const isRtl = document.documentElement.dir === "rtl" || document.body.dir === "rtl" || document.querySelector("main")?.dir === "rtl";
+      stack.style[isRtl ? "left" : "right"] = "20px";
+      const tiktok = socialButton("TikTok", settings.tiktok_url, "");
+      const instagram = socialButton("Instagram", settings.instagram_url, "");
+      const facebook = socialButton("Facebook", settings.facebook_url, "");
+      [tiktok, instagram, facebook].forEach(styleSocialButton);
+      tiktok.style.background = "#050505";
+      instagram.style.background = "linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)";
+      facebook.style.background = "#1877F2";
+      stack.append(tiktok, instagram, facebook);
+      document.body.append(stack);
+    }
   }
 
   function accessToken() {
