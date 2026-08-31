@@ -203,6 +203,9 @@
         width: 18px;
         height: 18px;
       }
+      #peyvand-mobile-social-stack .peyvand-social-label {
+        display: none !important;
+      }
       #peyvand-mobile-menu-button {
         display: none;
       }
