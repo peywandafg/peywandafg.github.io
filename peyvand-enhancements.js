@@ -86,7 +86,7 @@
       : key.includes("tiktok") || key === "tk"
         ? "tiktok"
         : "facebook";
-    return '<img class="social-brand-logo social-brand-logo--' + icon + '" src="https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/' + icon + '.svg" alt="" aria-hidden="true">';
+    return '<img class="social-brand-logo social-brand-logo--' + icon + '" src="/assets/social-' + icon + '.svg" alt="" aria-hidden="true">';
   }
 
   function socialButton(name, url, classes) {
@@ -204,6 +204,29 @@
       }
       #peyvand-mobile-social-stack {
         display: none;
+      }
+      @media (min-width: 768px) {
+        header .brand-logo__image {
+          object-fit: contain !important;
+        }
+        .hero-luxury .logo-stage .logo-card-3d {
+          transform: none !important;
+          animation: none !important;
+          padding: 10px !important;
+          background: rgba(8,37,31,.78) !important;
+          box-shadow: 0 26px 65px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.18) !important;
+        }
+        .hero-luxury .logo-stage .logo-card-3d img {
+          object-fit: contain !important;
+          background: #0b2d24 !important;
+        }
+        .hero-luxury .logo-stage .logo-orbit {
+          display: none !important;
+        }
+        .hero-luxury .logo-stage .logo-float-tag {
+          animation: none !important;
+          transform: none !important;
+        }
       }
       #kontakt aside {
         color: #ffffff !important;
