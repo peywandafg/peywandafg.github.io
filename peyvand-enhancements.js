@@ -164,6 +164,32 @@
       #peyvand-mobile-social-stack {
         display: none;
       }
+      .hero-luxury .trust-chip {
+        cursor: pointer;
+        transition: border-color .2s, background-color .2s, color .2s, box-shadow .2s, transform .15s;
+      }
+      .hero-luxury .trust-chip:hover,
+      .hero-luxury .trust-chip:focus-visible {
+        border-color: rgba(225,188,98,.55);
+        background: rgba(225,188,98,.1);
+        color: #fff7df;
+        box-shadow: 0 10px 24px rgba(0,0,0,.18);
+        outline: none;
+      }
+      .hero-luxury .trust-chip:active {
+        transform: scale(.97);
+      }
+      #wege .journey-panel .mt-9.space-y-4 > div {
+        align-items: flex-start;
+      }
+      #wege .journey-panel .mt-9.space-y-4 > div > span:last-child {
+        max-width: 68%;
+        text-align: right;
+        line-height: 1.45;
+      }
+      #wege .journey-path p {
+        line-height: 1.75;
+      }
       @media (max-width: 767px) {
         .hero-luxury .peyvand-mobile-hero-logo {
           width: 100%;
@@ -412,6 +438,120 @@
     }
   }
 
+  const journeyExplanations = {
+    de: {
+      intro: "Sprachniveaus zeigen, wie gut du Deutsch verstehen, sprechen, lesen und schreiben kannst. Hier siehst du einfach erklärt, was jede Stufe und jeder mögliche Weg bedeutet.",
+      levels: [
+        "Erste Wörter und sehr einfache Sätze",
+        "Alltag verstehen und kurze Gespräche führen",
+        "Im Alltag weitgehend selbstständig kommunizieren",
+        "Sicher für viele Ausbildungen und Berufe kommunizieren",
+        "Komplexe Fachsprache für Studium und anspruchsvolle Berufe"
+      ],
+      paths: [
+        "Bei einer Ausbildung lernst du einen Beruf praktisch in einem Betrieb und zusätzlich in der Berufsschule. Sie dauert meistens 2 bis 3,5 Jahre. In der Regel bekommst du währenddessen eine monatliche Ausbildungsvergütung. Häufig wird Deutsch auf B1- oder B2-Niveau verlangt.",
+        "Bei einem Studium lernst du an einer Universität oder Hochschule. Du brauchst einen passenden Schulabschluss und je nach Studiengang meistens Deutsch auf B2- oder C1-Niveau. Die genauen Voraussetzungen unterscheiden sich je nach Hochschule.",
+        "Direkte Arbeit bedeutet, dass du dich mit deiner vorhandenen Ausbildung oder Berufserfahrung bei einem Arbeitgeber bewirbst. Je nach Beruf müssen deine Qualifikation anerkannt und bestimmte Deutschkenntnisse nachgewiesen werden."
+      ]
+    },
+    en: {
+      intro: "Language levels show how well you can understand, speak, read and write German. Here you can easily see what each level and each possible pathway means.",
+      levels: [
+        "First words and very simple sentences",
+        "Understand everyday situations and hold short conversations",
+        "Communicate independently in most everyday situations",
+        "Communicate confidently for many training programmes and jobs",
+        "Complex academic and professional language"
+      ],
+      paths: [
+        "Vocational training means learning a profession in a company and at vocational school. It usually lasts 2 to 3.5 years and normally includes monthly training pay. German at B1 or B2 level is often required.",
+        "Studying means learning at a university. You need a suitable school qualification and usually German at B2 or C1 level, depending on the programme. Exact requirements differ between universities.",
+        "Direct employment means applying to an employer with your existing qualification or work experience. Depending on the profession, recognition of your qualification and proof of German may be required."
+      ]
+    },
+    fa: {
+      intro: "سطح‌های زبان نشان می‌دهند که تا چه اندازه می‌توانید آلمانی را بفهمید، صحبت کنید، بخوانید و بنویسید. در اینجا هر سطح و هر مسیر به زبان ساده توضیح داده شده است.",
+      levels: [
+        "واژه‌های نخست و جمله‌های بسیار ساده",
+        "درک زندگی روزمره و گفت‌وگوهای کوتاه",
+        "ارتباط نسبتاً مستقل در زندگی روزمره",
+        "ارتباط مطمئن برای بسیاری از آوسبیلدونگ‌ها و کارها",
+        "زبان تخصصی و پیچیده برای دانشگاه و مشاغل تخصصی"
+      ],
+      paths: [
+        "آوسبیلدونگ یعنی یک حرفه را به‌صورت عملی در شرکت و هم‌زمان در مکتب مسلکی یاد می‌گیرید. معمولاً ۲ تا ۳٫۵ سال دوام می‌کند و در بیشتر موارد معاش آموزشی ماهانه دریافت می‌کنید. اغلب سطح B1 یا B2 آلمانی لازم است.",
+        "تحصیل یعنی درس خواندن در دانشگاه یا مؤسسه تحصیلات عالی. به سند مکتب مناسب و بسته به رشته معمولاً سطح B2 یا C1 آلمانی نیاز دارید. شرایط دقیق در هر دانشگاه متفاوت است.",
+        "کار مستقیم یعنی با تحصیلات یا تجربه کاری فعلی خود برای یک کارفرما درخواست می‌دهید. بسته به شغل، ممکن است تأیید مدرک و مدرک زبان آلمانی لازم باشد."
+      ]
+    },
+    ps: {
+      intro: "د ژبې کچې ښيي چې تاسې آلماني څومره درک کولای، ویلی، لوستلی او لیکلی شئ. دلته هره کچه او هره لاره په ساده ډول تشریح شوې ده.",
+      levels: [
+        "لومړني لغتونه او ډېرې ساده جملې",
+        "د ورځني ژوند پوهه او لنډې خبرې",
+        "په ورځني ژوند کې تر ډېره خپلواکه اړیکه",
+        "د ډېرو مسلکي زده کړو او دندو لپاره ډاډمنې خبرې",
+        "د پوهنتون او تخصصي کار لپاره پېچلې مسلکي ژبه"
+      ],
+      paths: [
+        "آوسبیلدونګ یعنې یو مسلک په عملي ډول په شرکت او هم‌مهاله په مسلکي ښوونځي کې زده کول. عموماً له ۲ تر ۳٫۵ کلونو دوام کوي او اکثره میاشتنۍ روزنیزه تنخوا لري. ډېری وخت B1 یا B2 آلماني غوښتل کېږي.",
+        "تحصیل یعنې په پوهنتون یا لوړو زده کړو موسسه کې زده کړه. مناسب د ښوونځي سند او د رشتې له مخې عموماً B2 یا C1 آلماني ته اړتیا وي. دقیق شرایط د هر پوهنتون له مخې توپیر لري.",
+        "مستقیم کار یعنې له خپلې موجودې زده کړې یا کاري تجربې سره کارفرما ته غوښتنلیک ورکول. د مسلک له مخې ښايي د سند پېژندنه او د آلماني ژبې ثبوت اړین وي."
+      ]
+    }
+  };
+
+  function improveBeginnerJourney() {
+    const heroNote = document.querySelector(".hero-luxury svg.lucide-shield-check")?.closest("p");
+    if (heroNote) heroNote.style.display = "none";
+
+    const contact = document.querySelector("#kontakt");
+    const contactMain = contact?.querySelector(":scope > div > div");
+    if (contactMain?.children?.[3]) contactMain.children[3].style.display = "none";
+
+    const section = document.querySelector("#wege");
+    if (!section) return;
+    const copy = journeyExplanations[language()];
+    const intro = section.querySelector(":scope > div > div:first-child > p:last-child");
+    setText(intro, copy.intro);
+
+    const levelRows = section.querySelectorAll(".journey-panel .mt-9.space-y-4 > div");
+    levelRows.forEach((row, index) => {
+      const label = row.querySelector("span:last-child");
+      if (copy.levels[index]) setText(label, copy.levels[index]);
+    });
+
+    const pathCards = [...section.querySelectorAll(".journey-path")];
+    const ids = ["peyvand-ausbildung", "peyvand-studium", "peyvand-arbeit"];
+    pathCards.forEach((card, index) => {
+      card.id = ids[index];
+      const paragraph = card.querySelector("p");
+      if (copy.paths[index]) setText(paragraph, copy.paths[index]);
+    });
+
+    const panel = section.querySelector(".journey-panel");
+    if (panel) panel.id = "peyvand-sprache";
+
+    const chips = [...document.querySelectorAll(".hero-luxury .trust-chip")];
+    const targets = ["#peyvand-sprache", "#peyvand-studium", "#peyvand-ausbildung", "#unternehmen"];
+    chips.forEach((chip, index) => {
+      if (chip.dataset.peyvandLinked) return;
+      chip.dataset.peyvandLinked = "true";
+      chip.dataset.target = targets[index];
+      chip.setAttribute("role", "link");
+      chip.setAttribute("tabindex", "0");
+      chip.setAttribute("aria-label", chip.textContent.trim() + " öffnen");
+      const openTarget = () => document.querySelector(chip.dataset.target)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      chip.addEventListener("click", openTarget);
+      chip.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openTarget();
+        }
+      });
+    });
+  }
+
   function accessToken() {
     for (let index = 0; index < localStorage.length; index++) {
       const key = localStorage.key(index);
@@ -475,6 +615,7 @@
   function applyAll() {
     applyTranslations();
     arrangeMobileHero();
+    improveBeginnerJourney();
     renderSocials();
     renderSocialAdmin();
   }
