@@ -1,11 +1,182 @@
-(()=>{const A="https://lakcmrzaqjrypztlkegx.supabase.co",K="sb_publishable_3KkoA-9hVthbUzatMeGjZA_el0N5LK9";
-const Q={en:{"Hauptnavigation":"Main navigation","Wege & Ziele":"Paths & goals","Sprache":"Language","Studium":"University studies","Ausbildung":"Vocational training","Unternehmen":"Company","Vor- und Nachname":"First and last name","Telefon / WhatsApp":"Phone / WhatsApp","Altersgruppe":"Age group","Unter 18":"Under 18","Bildungsstand":"Education level","Schule":"School","Schulabschluss":"School-leaving qualification","Berufsausbildung":"Vocational qualification","Sonstiges":"Other","Deutschniveau":"German level","noch nicht begonnen":"Not started yet","Mein Ziel":"My goal","Arbeit":"Employment","Noch unsicher":"Not sure yet","Berufserfahrung (optional)":"Work experience (optional)","In welchen Bereichen hast du gearbeitet?":"Which fields have you worked in?","Bevorzugte Sprache":"Preferred contact language","Nachricht (optional)":"Message (optional)","Was ist dir besonders wichtig?":"What is especially important to you?","Ansprechperson":"Contact person","E-Mail":"Email","Telefon (optional)":"Phone (optional)","Welche Profile suchen Sie?":"Which profiles are you looking for?","Beruf, Anzahl und wichtige Voraussetzungen":"Occupation, number of people and important requirements","Weitere Informationen (optional)":"Additional information (optional)"},ps:{"فهرست اصلی":"اصلي مېنو","مسیرها":"لارې او موخې","زبان":"ژبه","تحصیل":"زده کړې","آوسبیلدونگ":"مسلکي زده کړه","نام شرکت":"شرکت","نام و نام خانوادگی":"نوم او تخلص","شماره تماس":"د ټیلیفون / واټساپ شمېره","سن":"د عمر ډله","کمتر از ۱۸":"له ۱۸ کلونو کم","سطح تحصیل":"د زده کړې کچه","مکتب":"ښوونځی","فراغت مکتب":"د ښوونځي فراغت","آموزش فنی":"مسلکي زده کړه","سایر":"نور","سطح زبان آلمانی":"د جرمني ژبې کچه","هنوز شروع نکرده‌ام":"لا مې نه ده پیل کړې","هدف من":"زما موخه","کار":"کار","هنوز مطمئن نیستم":"لا ډاډه نه یم","تجربه کاری (اختیاری)":"کاري تجربه (اختیاري)","در کدام بخش‌ها کار کرده‌اید؟":"تاسو په کومو برخو کې کار کړی؟","زبان تماس":"د اړیکې غوره ژبه","پیام (اختیاری)":"پیغام (اختیاري)","چه چیزی برای شما مهم است؟":"ستاسو لپاره څه ډېر مهم دي؟","شخص تماس":"د اړیکې مسئول","ایمیل":"برېښنالیک","شماره تماس (اختیاری)":"د ټیلیفون شمېره (اختیاري)","به کدام پروفایل‌ها نیاز دارید؟":"تاسو کومو کسانو ته اړتیا لرئ؟","رشته، تعداد و شرایط مهم":"مسلک، شمېر او مهم شرایط","معلومات بیشتر (اختیاری)":"نور معلومات (اختیاري)"}};
-const C={de:["Direkter Kontakt","Persönliche Beratung direkt aus Deutschland.","Nach dem Absenden wird Ihre Anfrage mit allen ausgefüllten Angaben direkt per WhatsApp an unser Team gesendet. Ihre Situation wird persönlich in Deutschland geprüft und sorgfältig eingeordnet. Danach erhalten Sie eine direkte, ehrliche und individuelle Beratung zu den passenden nächsten Schritten.","Wir geben keine Visa- oder Erfolgsgarantie. Sie erhalten eine realistische Einschätzung und klare Orientierung.","Ihr Ansprechpartner","Ansprechpartner und E-Mail können im Adminbereich ergänzt werden.","Ich stimme zu, dass meine Angaben vollständig per WhatsApp an PEYWAND gesendet und zur Bearbeitung meiner Anfrage verwendet werden. Die Angaben werden nicht auf dieser Webseite gespeichert."],en:["Direct contact","Personal consultation directly from Germany.","After you submit the form, all completed information is sent directly to our team via WhatsApp. Your situation is reviewed personally in Germany and assessed carefully. You will then receive direct, honest and individual guidance on the appropriate next steps.","We do not guarantee visas or success. You receive a realistic assessment and clear guidance.","Your contact person","The contact person and email address can be added in the admin area.","I agree that all my information will be sent to PEYWAND via WhatsApp and used to process my request. The information is not stored on this website."],fa:["تماس مستقیم","مشاوره شخصی به‌صورت مستقیم از آلمان.","پس از ارسال فورم، تمام معلومات تکمیل‌شده شما مستقیماً از طریق واتساپ به تیم ما فرستاده می‌شود. وضعیت شما به‌صورت شخصی در آلمان بررسی و با دقت ارزیابی می‌گردد. سپس درباره گام‌های مناسب بعدی، مشاوره مستقیم، صادقانه و اختصاصی دریافت می‌کنید.","ما ویزا یا موفقیت را تضمین نمی‌کنیم. شما یک ارزیابی واقع‌بینانه و راهنمایی روشن دریافت می‌کنید.","مسئول تماس شما","نام مسئول تماس و ایمیل را می‌توان در بخش مدیریت اضافه کرد.","می‌پذیرم که تمام معلومات من از طریق واتساپ به PEYWAND فرستاده شود و برای بررسی درخواست من استفاده گردد. این معلومات در این وب‌سایت ذخیره نمی‌شود."],ps:["مستقیمه اړیکه","له آلمان څخه مستقیمه او شخصي مشوره.","د فورم له لېږلو وروسته، ستاسو ټول ډک شوي معلومات د واټساپ له لارې مستقیم زموږ ټیم ته استول کېږي. ستاسو حالت په آلمان کې په شخصي ډول او په پوره دقت ارزول کېږي. وروسته به د مناسبو راتلونکو ګامونو په اړه مستقیمه، رښتینې او ځانګړې مشوره ترلاسه کړئ.","موږ د ویزې یا بریا تضمین نه ورکوو. تاسو به واقعي ارزونه او روښانه لارښوونه ترلاسه کړئ.","ستاسو د اړیکې مسئول","د اړیکې مسئول نوم او برېښنالیک د مدیریت په برخه کې زیاتېدای شي.","زه منم چې زما ټول معلومات د واټساپ له لارې PEYWAND ته واستول شي او زما د غوښتنې د څېړلو لپاره وکارول شي. معلومات په دې وېب‌پاڼه کې نه ساتل کېږي."]};
-let B=false,cache=null;const L=()=>({English:"en","دری":"fa","پښتو":"ps"})[document.querySelector('[data-slot="select-value"]')?.textContent?.trim()]||"de",S=async()=>{if(cache)return cache;let r=await fetch(A+"/rest/v1/site_settings?id=eq.true&select=instagram_url,tiktok_url,facebook_url",{headers:{apikey:K}});return cache=r.ok?(await r.json())[0]||{}:{}};
-function textTranslations(){let l=L(),map=Q[l];if(!map)return;let w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),n;while(n=w.nextNode()){let v=n.nodeValue.trim();if(map[v])n.nodeValue=n.nodeValue.replace(v,map[v])}document.querySelectorAll("input[placeholder],textarea[placeholder]").forEach(x=>{let v=x.getAttribute("placeholder");if(map[v])x.setAttribute("placeholder",map[v])})}
-function contact(){let e=document.querySelector("#kontakt");if(!e)return;let c=C[L()],m=e.querySelector(":scope > div > div"),a=e.querySelector("aside");[0,1,2,3].forEach(i=>{if(m?.children?.[i])m.children[i].textContent=c[i]});if(a?.children?.[0])a.children[0].textContent=c[4];let ps=a?.querySelectorAll("p");if(ps?.length>1)ps[ps.length-1].textContent=c[5];document.querySelectorAll('input[name="consent"],input[name="company_consent"]').forEach(i=>{let s=i.parentElement?.querySelector("span");if(s)s.textContent=c[6]})}
-const badge=(name,url,style)=>{let e=document.createElement(url?"a":"span");if(url){e.href=url;e.target="_blank";e.rel="noopener noreferrer"}e.textContent=name;e.className="absolute z-20 grid h-12 min-w-12 place-items-center rounded-2xl border border-white/25 px-3 text-[10px] font-black tracking-wider text-white shadow-[0_15px_35px_rgba(0,0,0,.35)] backdrop-blur-xl transition hover:-translate-y-1 "+style;return e};
-async function socials(){let stage=document.querySelector(".logo-stage");if(!stage||document.querySelector("#peyvand-social-orbit"))return;stage.querySelectorAll(".logo-float-tag--afg,.logo-float-tag--deu").forEach(x=>x.remove());if(!document.querySelector("#peyvand-social-motion")){let st=document.createElement("style");st.id="peyvand-social-motion";st.textContent="@keyframes peywandFloatOne{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}@keyframes peywandFloatTwo{0%,100%{transform:translateY(-8px) rotate(3deg)}50%{transform:translateY(8px) rotate(-3deg)}}@keyframes peywandFloatThree{0%,100%{transform:translate(-50%,0) rotate(-2deg)}50%{transform:translate(-50%,-13px) rotate(2deg)}}#peyvand-social-orbit a,#peyvand-social-orbit span{will-change:transform}#peyvand-social-orbit .social-one{animation:peyvandFloatOne 3.6s ease-in-out infinite}#peyvand-social-orbit .social-two{animation:peyvandFloatTwo 4.1s ease-in-out infinite}#peyvand-social-orbit .social-three{animation:peyvandFloatThree 3.8s ease-in-out infinite}";document.head.append(st)}let s=await S(),w=document.createElement("div");w.id="peyvand-social-orbit";w.className="absolute inset-0 z-20 pointer-events-none";let ig=badge("INSTAGRAM",s.instagram_url,"social-one -left-3 top-16 bg-gradient-to-br from-[#833ab4] via-[#fd1d1d] to-[#fcb045]"),tt=badge("TIKTOK",s.tiktok_url,"social-two -right-3 top-24 bg-black"),fb=badge("FACEBOOK",s.facebook_url,"social-three left-1/2 -bottom-7 bg-[#1877F2]");[ig,tt,fb].forEach(x=>{x.classList.add("pointer-events-auto");w.append(x)});stage.append(w)}
-function token(){for(let i=0;i<localStorage.length;i++){let k=localStorage.key(i);if(k?.startsWith("sb-")&&k.endsWith("-auth-token"))try{return JSON.parse(localStorage.getItem(k))?.access_token||""}catch{}}return""}
-async function admin(){if(!location.pathname.startsWith("/admin")||document.querySelector("#peyvand-social-admin"))return;let c=[...document.querySelectorAll("h2")].find(h=>h.textContent.includes("Inhalte & WhatsApp"))?.closest("section");if(!c)return;let s=await S(),b=document.createElement("div");b.id="peyvand-social-admin";b.className="mt-7 rounded-2xl border border-white/10 bg-white/5 p-5";b.innerHTML='<p class="text-sm font-bold text-[#f6eedb]">Instagram, TikTok & Facebook</p><p class="mt-2 text-xs leading-6 text-[#afc2ba]">Hier deine vollständigen Profil-Links eintragen.</p>'+["Instagram|social-ig|https://instagram.com/...","TikTok|social-tt|https://tiktok.com/@...","Facebook|social-fb|https://facebook.com/..."].map(v=>{let[n,id,p]=v.split("|");return '<label class="field-label admin-label mt-4"><span>'+n+'-Link</span><input id="'+id+'" class="field-input admin-input" type="url" dir="ltr" placeholder="'+p+'"></label>'}).join("")+'<button type="button" class="button-primary mt-5 w-full justify-center">Social-Links speichern</button><p class="mt-3 text-xs text-[#afc2ba]"></p>';c.append(b);b.querySelector("#social-ig").value=s.instagram_url||"";b.querySelector("#social-tt").value=s.tiktok_url||"";b.querySelector("#social-fb").value=s.facebook_url||"";b.querySelector("button").onclick=async()=>{let o=b.lastElementChild,t=token();if(!t){o.textContent="Bitte zuerst im Adminbereich anmelden.";return}let r=await fetch(A+"/rest/v1/site_settings?id=eq.true",{method:"PATCH",headers:{apikey:K,Authorization:"Bearer "+t,"Content-Type":"application/json",Prefer:"return=minimal"},body:JSON.stringify({instagram_url:b.querySelector("#social-ig").value.trim(),tiktok_url:b.querySelector("#social-tt").value.trim(),facebook_url:b.querySelector("#social-fb").value.trim()})});if(r.ok){cache=null;o.textContent="Alle Social-Links wurden gespeichert."}else o.textContent="Speichern war nicht möglich. Bitte erneut anmelden."}}
-const U=()=>{if(B)return;B=true;try{textTranslations();contact();socials();admin()}finally{B=false}};new MutationObserver(U).observe(document.documentElement,{childList:true,subtree:true,characterData:true});document.addEventListener("DOMContentLoaded",U);setTimeout(U,500)})();
+(() => {
+  const translations = {
+    de: [
+      "Direkter Kontakt",
+      "Persönliche Beratung direkt aus Deutschland.",
+      "Nach dem Absenden wird Ihre Anfrage direkt an unser Team weitergeleitet. Ihre Angaben werden persönlich vor Ort in Deutschland geprüft und sorgfältig eingeordnet. Anschließend erhalten Sie eine direkte und ehrliche Beratung zu passenden nächsten Schritten – individuell und nicht nach einem Standardschema.",
+      "Wir geben keine Visa- oder Erfolgsgarantie. Sie erhalten eine realistische Einschätzung und klare Orientierung.",
+      "Ihr Ansprechpartner",
+      "Ansprechpartner und E-Mail können im Adminbereich ergänzt werden."
+    ],
+    en: [
+      "Direct contact",
+      "Personal consultation directly from Germany.",
+      "After submitting the form, your request is forwarded directly to our team. Your information is personally reviewed and carefully assessed on site in Germany. You will then receive direct and honest advice on suitable next steps – individually and not according to a standard formula.",
+      "We do not guarantee a visa or a successful outcome. You will receive a realistic assessment and clear guidance.",
+      "Your contact person",
+      "The contact person and email address can be added in the admin area."
+    ],
+    fa: [
+      "تماس مستقیم",
+      "مشاوره شخصی به‌صورت مستقیم از آلمان.",
+      "پس از ارسال فورم، درخواست شما مستقیماً به تیم ما فرستاده می‌شود. معلومات شما به‌صورت شخصی در آلمان بررسی و با دقت ارزیابی می‌گردد. سپس درباره گام‌های مناسب بعدی، مشاوره مستقیم و صادقانه دریافت می‌کنید – به‌صورت فردی و نه بر اساس یک روش عمومی.",
+      "ما ویزا یا موفقیت را تضمین نمی‌کنیم. شما یک ارزیابی واقع‌بینانه و راهنمایی روشن دریافت می‌کنید.",
+      "مسئول تماس شما",
+      "نام مسئول تماس و ایمیل را می‌توان در بخش مدیریت اضافه کرد."
+    ],
+    ps: [
+      "مستقیمه اړیکه",
+      "له آلمان څخه مستقیمه شخصي مشوره.",
+      "د فورم له لېږلو وروسته، ستاسو غوښتنه مستقیم زموږ ټیم ته استول کېږي. ستاسو معلومات په آلمان کې په شخصي ډول او په پوره دقت ارزول کېږي. وروسته به د مناسبو راتلونکو ګامونو په اړه مستقیمه او رښتینې مشوره ترلاسه کړئ – ستاسو د شخصي حالت له مخې، نه د یوې عمومي طریقې پر بنسټ.",
+      "موږ د ویزې یا بریا تضمین نه ورکوو. تاسو به واقعي ارزونه او روښانه لارښوونه ترلاسه کړئ.",
+      "ستاسو د اړیکې مسئول",
+      "د اړیکې مسئول نوم او برېښنالیک د مدیریت په برخه کې زیاتېدای شي."
+    ]
+  };
+
+  function language() {
+    const value = document.querySelector('[data-slot="select-value"]')?.textContent?.trim();
+    return value === "English" ? "en" : value === "دری" ? "fa" : value === "پښتو" ? "ps" : "de";
+  }
+
+  function setText(element, value) {
+    if (element && element.textContent !== value) element.textContent = value;
+  }
+
+  function applyTranslations() {
+    const section = document.querySelector("#kontakt");
+    if (!section) return;
+    const text = translations[language()];
+    const main = section.querySelector(":scope > div > div");
+    const aside = section.querySelector("aside");
+    setText(main?.children?.[0], text[0]);
+    setText(main?.children?.[1], text[1]);
+    setText(main?.children?.[2], text[2]);
+    setText(main?.children?.[3], text[3]);
+    setText(aside?.children?.[0], text[4]);
+    const paragraphs = aside?.querySelectorAll("p");
+    if (paragraphs?.length > 1) setText(paragraphs[paragraphs.length - 1], text[5]);
+  }
+
+
+  const SUPABASE_URL = "https://lakcmrzaqjrypztlkegx.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_3KkoA-9hVthbUzatMeGjZA_el0N5LK9";
+  let settingsCache;
+
+  async function getSettings() {
+    if (settingsCache) return settingsCache;
+    try {
+      const response = await fetch(SUPABASE_URL + "/rest/v1/site_settings?id=eq.true&select=*", {
+        headers: { apikey: SUPABASE_KEY }
+      });
+      settingsCache = response.ok ? (await response.json())[0] || {} : {};
+    } catch {
+      settingsCache = {};
+    }
+    return settingsCache;
+  }
+
+  function socialButton(name, url, classes) {
+    const element = document.createElement(url ? "a" : "span");
+    if (url) {
+      element.href = url;
+      element.target = "_blank";
+      element.rel = "noopener noreferrer";
+      element.setAttribute("aria-label", name + " öffnen");
+    }
+    element.textContent = name;
+    element.className = "pointer-events-auto grid min-h-11 min-w-24 place-items-center rounded-2xl border border-white/25 px-3 py-2 text-[10px] font-black tracking-wider text-white shadow-lg transition duration-200 hover:-translate-y-1 " + classes;
+    return element;
+  }
+
+  async function renderSocials() {
+    const stage = document.querySelector(".logo-stage");
+    if (!stage || document.querySelector("#peyvand-social-buttons")) return;
+    stage.querySelectorAll(".logo-float-tag--afg,.logo-float-tag--deu").forEach(element => element.remove());
+    const settings = await getSettings();
+    const wrapper = document.createElement("div");
+    wrapper.id = "peyvand-social-buttons";
+    wrapper.className = "absolute inset-0 z-20 pointer-events-none";
+    const instagram = socialButton("INSTAGRAM", settings.instagram_url, "absolute -left-5 top-16 bg-gradient-to-br from-[#833ab4] via-[#fd1d1d] to-[#fcb045]");
+    const tiktok = socialButton("TIKTOK", settings.tiktok_url, "absolute -right-5 top-24 bg-black");
+    const facebook = socialButton("FACEBOOK", settings.facebook_url, "absolute bottom-0 left-1/2 -translate-x-1/2 bg-[#1877F2]");
+    wrapper.append(instagram, tiktok, facebook);
+    stage.append(wrapper);
+  }
+
+  function accessToken() {
+    for (let index = 0; index < localStorage.length; index++) {
+      const key = localStorage.key(index);
+      if (key?.startsWith("sb-") && key.endsWith("-auth-token")) {
+        try {
+          return JSON.parse(localStorage.getItem(key))?.access_token || "";
+        } catch {}
+      }
+    }
+    return "";
+  }
+
+  async function renderSocialAdmin() {
+    if (!location.pathname.startsWith("/admin") || document.querySelector("#peyvand-social-admin")) return;
+    const section = [...document.querySelectorAll("h2")].find(heading => heading.textContent.includes("Inhalte & WhatsApp"))?.closest("section");
+    if (!section) return;
+    const settings = await getSettings();
+    const panel = document.createElement("div");
+    panel.id = "peyvand-social-admin";
+    panel.className = "mt-7 rounded-2xl border border-white/10 bg-white/5 p-5";
+    panel.innerHTML = '<p class="text-sm font-bold text-[#f6eedb]">Instagram, TikTok & Facebook</p><p class="mt-2 text-xs leading-6 text-[#afc2ba]">Hier die vollständigen Profil-Links eintragen.</p>' +
+      [["Instagram","instagram_url","https://instagram.com/..."],["TikTok","tiktok_url","https://tiktok.com/@..."],["Facebook","facebook_url","https://facebook.com/..."]].map(item =>
+        '<label class="field-label admin-label mt-4"><span>' + item[0] + '-Link</span><input id="social-' + item[1] + '" class="field-input admin-input" type="url" dir="ltr" placeholder="' + item[2] + '"></label>'
+      ).join("") +
+      '<button type="button" class="button-primary mt-5 w-full justify-center">Social-Links speichern</button><p class="mt-3 text-xs text-[#afc2ba]"></p>';
+    section.append(panel);
+    ["instagram_url","tiktok_url","facebook_url"].forEach(name => {
+      panel.querySelector("#social-" + name).value = settings[name] || "";
+    });
+    panel.querySelector("button").addEventListener("click", async () => {
+      const message = panel.lastElementChild;
+      const token = accessToken();
+      if (!token) {
+        message.textContent = "Bitte zuerst im Adminbereich anmelden.";
+        return;
+      }
+      const values = {};
+      ["instagram_url","tiktok_url","facebook_url"].forEach(name => {
+        values[name] = panel.querySelector("#social-" + name).value.trim();
+      });
+      const response = await fetch(SUPABASE_URL + "/rest/v1/site_settings?id=eq.true", {
+        method: "PATCH",
+        headers: {
+          apikey: SUPABASE_KEY,
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json",
+          Prefer: "return=minimal"
+        },
+        body: JSON.stringify(values)
+      });
+      if (response.ok) {
+        settingsCache = undefined;
+        message.textContent = "Alle Social-Links wurden gespeichert.";
+      } else {
+        message.textContent = "Speichern war nicht möglich. Bitte erneut anmelden.";
+      }
+    });
+  }
+
+  let timer;
+  function applyAll() {
+    applyTranslations();
+    renderSocials();
+    renderSocialAdmin();
+  }
+  function schedule() {
+    clearTimeout(timer);
+    timer = setTimeout(applyAll, 100);
+  }
+
+  document.addEventListener("click", schedule);
+  document.addEventListener("change", schedule);
+  new MutationObserver(schedule).observe(document.documentElement, { childList: true, subtree: true });
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", applyAll);
+  else applyAll();
+})();
