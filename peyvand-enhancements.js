@@ -76,6 +76,17 @@
     return settingsCache;
   }
 
+  function socialIcon(name) {
+    const key = name.toLowerCase();
+    if (key.includes("instagram") || key === "ig") {
+      return '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1"></circle></svg>';
+    }
+    if (key.includes("tiktok") || key === "tk") {
+      return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3v11.2a4.8 4.8 0 1 1-4-4.74"></path><path d="M15 3c.45 2.4 1.85 4.1 4.5 4.7"></path></svg>';
+    }
+    return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3.3 0-5 1.9-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1Z"></path></svg>';
+  }
+
   function socialButton(name, url, classes) {
     const element = document.createElement(url ? "a" : "span");
     if (url) {
@@ -84,8 +95,8 @@
       element.rel = "noopener noreferrer";
       element.setAttribute("aria-label", name + " öffnen");
     }
-    element.textContent = name;
-    element.className = "pointer-events-auto grid min-h-11 min-w-24 place-items-center rounded-2xl border border-white/25 px-3 py-2 text-[10px] font-black tracking-wider text-white shadow-lg transition duration-200 hover:-translate-y-1 " + classes;
+    element.innerHTML = socialIcon(name) + '<span class="peyvand-social-label">' + name + '</span>';
+    element.className = "pointer-events-auto grid min-h-11 min-w-24 place-items-center rounded-2xl border border-white/25 px-3 py-2 text-[10px] font-black tracking-wider text-white shadow-lg transition duration-200 " + classes;
     return element;
   }
 
@@ -105,6 +116,12 @@
         position: static !important;
         transform: none !important;
         animation: none !important;
+        width: 36px;
+        min-width: 36px !important;
+        height: 36px;
+        padding: 0 !important;
+        border: 1px solid rgba(255,255,255,.18);
+        transition: color .2s, background-color .2s, border-color .2s !important;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -123,6 +140,23 @@
         animation: none !important;
         transition: color .2s, background-color .2s, border-color .2s !important;
       }
+      #peyvand-social-desktop svg,
+      #peyvand-social-mobile-links svg {
+        width: 19px;
+        height: 19px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      #peyvand-social-desktop .peyvand-social-label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+      }
       #peyvand-social-mobile-menu {
         display: none;
       }
@@ -132,6 +166,10 @@
       @media (max-width: 767px) {
         #peyvand-social-desktop { display: none; }
         #peyvand-mobile-menu-button {
+          position: fixed;
+          right: 18px;
+          bottom: 18px;
+          z-index: 90;
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -244,7 +282,7 @@
     mobileButton.setAttribute("aria-label", "Menü öffnen");
     mobileButton.setAttribute("aria-expanded", "false");
     mobileButton.textContent = "☰";
-    controls.append(mobileButton);
+    document.body.append(mobileButton);
 
     const mobileMenu = document.createElement("div");
     mobileMenu.id = "peyvand-social-mobile-menu";
