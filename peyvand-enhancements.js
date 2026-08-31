@@ -90,18 +90,49 @@
   }
 
   async function renderSocials() {
-    const stage = document.querySelector(".logo-stage");
-    if (!stage || document.querySelector("#peyvand-social-buttons")) return;
-    stage.querySelectorAll(".logo-float-tag--afg,.logo-float-tag--deu").forEach(element => element.remove());
-    const settings = await getSettings();
+    if (document.querySelector("#peyvand-social-buttons")) return;
     const wrapper = document.createElement("div");
     wrapper.id = "peyvand-social-buttons";
-    wrapper.className = "absolute inset-0 z-20 pointer-events-none";
-    const instagram = socialButton("INSTAGRAM", settings.instagram_url, "absolute -left-5 top-16 bg-gradient-to-br from-[#833ab4] via-[#fd1d1d] to-[#fcb045]");
-    const tiktok = socialButton("TIKTOK", settings.tiktok_url, "absolute -right-5 top-24 bg-black");
-    const facebook = socialButton("FACEBOOK", settings.facebook_url, "absolute bottom-0 left-1/2 -translate-x-1/2 bg-[#1877F2]");
+    Object.assign(wrapper.style, {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flexWrap: "wrap",
+      gap: "10px",
+      padding: "10px 16px",
+      background: "#062b23",
+      borderBottom: "1px solid rgba(216,184,94,.25)",
+      position: "relative",
+      zIndex: "30"
+    });
+    document.body.prepend(wrapper);
+    const settings = await getSettings();
+    const instagram = socialButton("INSTAGRAM", settings.instagram_url, "");
+    const tiktok = socialButton("TIKTOK", settings.tiktok_url, "");
+    const facebook = socialButton("FACEBOOK", settings.facebook_url, "");
+    [instagram, tiktok, facebook].forEach(button => {
+      Object.assign(button.style, {
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "38px",
+        minWidth: "100px",
+        borderRadius: "12px",
+        padding: "8px 14px",
+        color: "white",
+        fontSize: "11px",
+        fontWeight: "800",
+        letterSpacing: ".06em",
+        textDecoration: "none",
+        boxShadow: "0 5px 14px rgba(0,0,0,.2)",
+        transform: "none",
+        animation: "none"
+      });
+    });
+    instagram.style.background = "linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)";
+    tiktok.style.background = "#050505";
+    facebook.style.background = "#1877F2";
     wrapper.append(instagram, tiktok, facebook);
-    stage.append(wrapper);
   }
 
   function accessToken() {
