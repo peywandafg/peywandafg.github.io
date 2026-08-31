@@ -121,7 +121,7 @@
         height: 36px;
         padding: 0 !important;
         border: 1px solid rgba(255,255,255,.18);
-        transition: color .2s, background-color .2s, border-color .2s !important;
+        transition: color .2s, background-color .2s, border-color .2s, box-shadow .2s, transform .12s !important;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -134,7 +134,7 @@
         font: 800 9px/1 Arial, sans-serif;
         letter-spacing: .04em;
         text-decoration: none;
-        box-shadow: none !important;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.38), 0 5px 12px rgba(0,0,0,.26), 0 2px 0 rgba(0,0,0,.24) !important;
         position: static !important;
         transform: none !important;
         animation: none !important;
@@ -176,9 +176,19 @@
         border-radius: 999px;
         border: 1px solid rgba(255,255,255,.28);
         color: #fff;
-        box-shadow: 0 8px 22px rgba(0,0,0,.25);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.42), 0 7px 16px rgba(0,0,0,.28), 0 2px 0 rgba(0,0,0,.24) !important;
         transform: none !important;
         animation: none !important;
+      }
+      #peyvand-social-desktop a:hover,
+      #peyvand-social-desktop span:hover {
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 8px 18px rgba(0,0,0,.3), 0 2px 0 rgba(0,0,0,.2) !important;
+      }
+      #peyvand-social-desktop a:active,
+      #peyvand-social-desktop span:active,
+      #peyvand-mobile-social-stack a:active,
+      #peyvand-mobile-social-stack span:active {
+        transform: scale(.94) !important;
       }
       #peyvand-mobile-social-stack svg {
         display: block !important;
