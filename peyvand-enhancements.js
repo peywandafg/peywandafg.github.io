@@ -102,6 +102,9 @@
       }
       #peyvand-social-desktop a,
       #peyvand-social-desktop span {
+        position: static !important;
+        transform: none !important;
+        animation: none !important;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -114,9 +117,11 @@
         font: 800 9px/1 Arial, sans-serif;
         letter-spacing: .04em;
         text-decoration: none;
-        box-shadow: none;
-        transform: none;
-        animation: none;
+        box-shadow: none !important;
+        position: static !important;
+        transform: none !important;
+        animation: none !important;
+        transition: color .2s, background-color .2s, border-color .2s !important;
       }
       #peyvand-social-mobile-menu {
         display: none;
@@ -152,6 +157,12 @@
           backdrop-filter: blur(10px);
         }
         #peyvand-social-mobile-menu.is-open { display: flex; }
+      #peyvand-social-mobile-links a,
+      #peyvand-social-mobile-links span {
+        position: static !important;
+        transform: none !important;
+        animation: none !important;
+      }
         #peyvand-social-mobile-panel {
           width: 100%;
           padding: 20px 16px 16px;
@@ -200,8 +211,10 @@
       fontWeight: "800",
       background: "#1877F2",
       boxShadow: "none",
+      position: "static",
       transform: "none",
-      animation: "none"
+      animation: "none",
+      transition: "color .2s, background-color .2s, border-color .2s"
     });
   }
 
