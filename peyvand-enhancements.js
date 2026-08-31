@@ -78,13 +78,12 @@
 
   function socialIcon(name) {
     const key = name.toLowerCase();
-    if (key.includes("instagram") || key === "ig") {
-      return '<svg class="social-icon social-icon-instagram" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1"></circle></svg>';
-    }
-    if (key.includes("tiktok") || key === "tk") {
-      return '<svg class="social-icon social-icon-tiktok" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3v11.2a4.8 4.8 0 1 1-4-4.74"></path><path d="M15 3c.45 2.4 1.85 4.1 4.5 4.7"></path></svg>';
-    }
-    return '<svg class="social-icon social-icon-facebook" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3.3 0-5 1.9-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1Z"></path></svg>';
+    const icon = key.includes("instagram") || key === "ig"
+      ? "instagram"
+      : key.includes("tiktok") || key === "tk"
+        ? "tiktok"
+        : "facebook";
+    return '<img class="social-brand-logo social-brand-logo--' + icon + '" src="https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/' + icon + '.svg" alt="" aria-hidden="true">';
   }
 
   function socialButton(name, url, classes) {
@@ -144,6 +143,24 @@
         transform: none !important;
         animation: none !important;
         transition: color .2s, background-color .2s, border-color .2s !important;
+      }
+      .social-brand-logo {
+        display: block !important;
+        width: 19px !important;
+        height: 19px !important;
+        max-width: 19px !important;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+        pointer-events: none;
+      }
+      #peyvand-social-desktop .social-brand-logo--facebook {
+        width: 18px !important;
+        height: 18px !important;
+      }
+      #peyvand-mobile-social-stack .social-brand-logo {
+        display: block !important;
+        width: 19px !important;
+        height: 19px !important;
       }
       #peyvand-social-desktop svg,
       #peyvand-social-mobile-links svg {
@@ -297,9 +314,7 @@
         transform: scale(.94) !important;
       }
       #peyvand-mobile-social-stack svg {
-        display: block !important;
-        width: 21px;
-        height: 21px;
+        display: none !important;
       }
       #peyvand-mobile-social-stack .social-icon-instagram,
       #peyvand-mobile-social-stack .social-icon-tiktok {
