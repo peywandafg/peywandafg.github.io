@@ -108,19 +108,24 @@
       #peyvand-social-desktop {
         display: inline-flex;
         align-items: center;
-        gap: 6px;
-        margin-right: 2px;
+        gap: 8px;
+        margin-right: 4px;
       }
       #peyvand-social-desktop a,
       #peyvand-social-desktop span {
         position: static !important;
         transform: none !important;
         animation: none !important;
-        width: 36px;
-        min-width: 36px !important;
-        height: 36px;
+        width: 38px !important;
+        min-width: 38px !important;
+        max-width: 38px !important;
+        height: 38px !important;
+        min-height: 38px !important;
         padding: 0 !important;
-        border: 1px solid rgba(255,255,255,.18);
+        flex: 0 0 38px;
+        overflow: hidden;
+        box-sizing: border-box;
+        border: 1px solid rgba(255,255,255,.3);
         transition: color .2s, background-color .2s, border-color .2s, box-shadow .2s, transform .12s !important;
         display: inline-flex;
         align-items: center;
@@ -142,13 +147,26 @@
       }
       #peyvand-social-desktop svg,
       #peyvand-social-mobile-links svg {
+        display: block;
         width: 19px;
         height: 19px;
+        flex: 0 0 19px;
         fill: none;
         stroke: currentColor;
-        stroke-width: 1.8;
+        stroke-width: 1.9;
         stroke-linecap: round;
         stroke-linejoin: round;
+      }
+      #peyvand-social-desktop .social-icon-instagram,
+      #peyvand-social-desktop .social-icon-tiktok {
+        fill: none;
+        stroke: currentColor;
+      }
+      #peyvand-social-desktop .social-icon-facebook {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+        stroke: none;
       }
       #peyvand-social-desktop .peyvand-social-label {
         position: absolute;
