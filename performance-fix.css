@@ -1,0 +1,8 @@
+@media (min-width: 768px) {
+.hero-luxury .logo-stage { display:block !important; visibility:visible !important; opacity:1 !important; }
+.hero-luxury .logo-card-3d { display:block !important; visibility:visible !important; opacity:1 !important; }
+.hero-luxury .logo-card-3d img { display:block !important; visibility:visible !important; opacity:1 !important; width:100% !important; height:auto !important; object-fit:contain !important; }
+header .brand-logo { display:flex !important; visibility:visible !important; opacity:1 !important; }
+header .brand-logo__frame { display:flex !important; visibility:visible !important; opacity:1 !important; }
+header .brand-logo__image { display:block !important; visibility:visible !important; opacity:1 !important; object-fit:contain !important; }
+}
