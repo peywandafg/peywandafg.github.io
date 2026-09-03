@@ -126,12 +126,13 @@
       "#peyvand-official-team .official-notice{border:1px solid rgba(225,188,98,.28);border-radius:28px;background:rgba(255,255,255,.06);padding:25px;box-shadow:0 18px 50px rgba(0,0,0,.22)}",
       "#peyvand-official-team .official-notice h3{font-family:Georgia,serif;font-size:27px;margin:0;color:#f2d27a}",
       "#peyvand-official-team .official-notice p{margin:14px 0 0;color:#cad8d2;line-height:1.8;font-size:14px}",
-      "#peyvand-official-team .team-grid{display:grid;gap:16px;margin-top:28px}",
-      "#peyvand-official-team .team-card{border:1px solid rgba(255,255,255,.12);border-radius:24px;background:rgba(255,255,255,.055);padding:22px}",
-      "#peyvand-official-team .team-card img{width:68px;height:68px;border-radius:50%;object-fit:cover;margin-bottom:15px;border:2px solid rgba(225,188,98,.5)}",
-      "#peyvand-official-team .team-card h4{font-family:Georgia,serif;font-size:22px;margin:0;color:#fff7e8}",
-      "#peyvand-official-team .team-card strong{display:block;margin-top:8px;color:#e7c66c;font-size:13px}",
-      "#peyvand-official-team .team-card p{margin:10px 0 0;color:#bdcec6;line-height:1.7;font-size:13px}",
+      "#peyvand-official-team .team-grid{display:grid;gap:0;margin-top:22px;border-top:1px solid rgba(255,255,255,.14)}",
+      "#peyvand-official-team .team-card{display:grid;grid-template-columns:auto minmax(150px,.9fr) minmax(120px,.7fr) minmax(220px,1.4fr);align-items:center;gap:8px 16px;border:0;border-bottom:1px solid rgba(255,255,255,.14);border-radius:0;background:transparent;padding:10px 2px}",
+      "#peyvand-official-team .team-card:not(:has(img)){grid-template-columns:minmax(150px,.9fr) minmax(120px,.7fr) minmax(220px,1.4fr)}",
+      "#peyvand-official-team .team-card img{width:34px;height:34px;border-radius:50%;object-fit:cover;border:1px solid rgba(225,188,98,.45)}",
+      "#peyvand-official-team .team-card h4{font-family:Arial,sans-serif;font-size:14px;line-height:1.3;margin:0;color:#fff7e8}",
+      "#peyvand-official-team .team-card strong{display:block;margin:0;color:#e7c66c;font-size:12px;line-height:1.35}",
+      "#peyvand-official-team .team-card p{margin:0;color:#bdcec6;line-height:1.4;font-size:12px}",
       "#peyvand-inapp-note{position:fixed;left:12px;right:12px;bottom:12px;z-index:130;border:1px solid rgba(240,207,114,.45);border-radius:18px;background:#08251f;color:#fff;padding:16px;box-shadow:0 20px 60px rgba(0,0,0,.45)}",
       "#peyvand-inapp-note p{margin:0;font:600 13px/1.6 Arial,sans-serif;color:#e7eee9}",
       "#peyvand-inapp-note .actions{display:flex;gap:9px;margin-top:12px}",
@@ -142,7 +143,8 @@
       "#peyvand-germany-chip{grid-column:span 2;cursor:pointer}",
       "#peyvand-team-admin .member-editor{margin-top:14px;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:rgba(255,255,255,.04);padding:15px}",
       "@media(min-width:640px){#peyvand-germany-chip{grid-column:auto}}",
-      "@media(min-width:700px){#deutschland-hilfe .de-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#peyvand-official-team .team-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}",
+      "@media(max-width:700px){#peyvand-official-team .team-grid{margin-top:18px}#peyvand-official-team .team-card{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:3px 10px;padding:9px 0}#peyvand-official-team .team-card:has(img){grid-template-columns:30px minmax(0,1.1fr) minmax(0,.9fr)}#peyvand-official-team .team-card img{width:28px;height:28px;grid-row:1/3}#peyvand-official-team .team-card h4{font-size:13px}#peyvand-official-team .team-card strong{text-align:right;font-size:11px}#peyvand-official-team .team-card p{grid-column:1/-1;padding-top:2px;font-size:11px;line-height:1.35}#peyvand-official-team .team-card:has(img) p{grid-column:2/-1}}",
+      "@media(min-width:700px){#deutschland-hilfe .de-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}",
       "@media(min-width:1024px){.hero-luxury .peyvand-trust-grid{grid-template-columns:repeat(6,minmax(0,1fr))!important}}"
     ].join("");
     document.head.append(style);
@@ -468,7 +470,7 @@
       "#peyvand-contact .contact-card strong{display:block;color:#e8cb78;font-family:Georgia,serif;font-size:23px}",
       "#peyvand-contact .contact-card a{display:inline-flex;margin-top:17px;border-radius:999px;background:#e3c66f;color:#102b23;padding:11px 17px;font-weight:800;text-decoration:none}",
       "#peyvand-de-summary{border-color:rgba(225,188,98,.24)}",
-      "@media(max-width:767px){.hero-luxury .max-w-2xl>.mt-9.flex{display:none!important}.hero-luxury .peyvand-trust-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}.hero-luxury .peyvand-trust-grid .trust-chip,.hero-luxury #peyvand-family-chip,.hero-luxury #peyvand-germany-chip{grid-column:auto!important;min-height:58px!important;height:58px!important;padding:10px 7px!important;font-size:10px!important;opacity:1!important}#angebote,#wege,#ablauf,#bewerbung,#peyvand-contact,#ueber-uns,#peyvand-official-team,#deutschland-hilfe{padding-top:72px!important;padding-bottom:72px!important}#peyvand-official-team .official-notice p{font-size:13px!important;line-height:1.65!important}#peyvand-official-team .team-card{padding:18px!important}#peyvand-official-team .team-card p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}}"
+      "@media(max-width:767px){.hero-luxury .max-w-2xl>.mt-9.flex{display:none!important}.hero-luxury .peyvand-trust-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}.hero-luxury .peyvand-trust-grid .trust-chip,.hero-luxury #peyvand-family-chip,.hero-luxury #peyvand-germany-chip{grid-column:auto!important;min-height:58px!important;height:58px!important;padding:10px 7px!important;font-size:10px!important;opacity:1!important}#angebote,#wege,#ablauf,#bewerbung,#peyvand-contact,#ueber-uns,#peyvand-official-team,#deutschland-hilfe{padding-top:72px!important;padding-bottom:72px!important}#peyvand-official-team .official-notice p{font-size:13px!important;line-height:1.65!important}}"
     ].join("");
     document.head.append(style);
   }
