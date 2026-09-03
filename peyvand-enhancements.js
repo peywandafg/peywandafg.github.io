@@ -555,8 +555,8 @@
     if (window.matchMedia("(max-width: 767px)").matches && !document.querySelector("#peyvand-mobile-social-stack")) {
       const stack = document.createElement("div");
       stack.id = "peyvand-mobile-social-stack";
-      const isRtl = document.documentElement.dir === "rtl" || document.body.dir === "rtl" || document.querySelector("main")?.dir === "rtl";
-      stack.style[isRtl ? "left" : "right"] = "20px";
+      stack.style.right = "20px";
+      stack.style.left = "auto";
       const tiktok = socialButton("TikTok", settings.tiktok_url, "");
       const instagram = socialButton("Instagram", settings.instagram_url, "");
       const facebook = socialButton("Facebook", settings.facebook_url, "");
