@@ -13,3 +13,13 @@
 .assignment-chip button{border:0;background:none;color:var(--danger);padding:0 2px;cursor:pointer}
 .install-app{border-color:rgba(229,198,108,.45);color:var(--gold);font-weight:800;white-space:nowrap}
 @media(max-width:760px){.assignment-section{grid-template-columns:1fr}.group-overview-panel{grid-column:auto}.install-app{max-width:92px;padding:0 9px;font-size:10px}}
+
+/* Platz für Statusleiste und Kameraausschnitt in der installierten Handy-App. */
+@media(display-mode:standalone){
+  .topbar{height:auto;min-height:calc(68px + env(safe-area-inset-top,0px));padding-top:calc(10px + env(safe-area-inset-top,0px))}
+  .app-layout{height:calc(100dvh - 68px - env(safe-area-inset-top,0px))}
+  .auth-wrap{min-height:calc(100dvh - 68px - env(safe-area-inset-top,0px))}
+}
+@media(display-mode:standalone) and (max-width:760px){
+  .video-panel{inset:calc(68px + env(safe-area-inset-top,0px)) 0 0}
+}
