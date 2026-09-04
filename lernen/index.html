@@ -7,7 +7,8 @@
   <meta name="robots" content="noindex,nofollow">
   <title>PEYWAND Lernplattform</title>
   <link rel="icon" href="/favicon.svg">
-  <link rel="stylesheet" href="/lernen/styles.css?v=1">
+  <link rel="stylesheet" href="/lernen/styles.css?v=2">
+  <link rel="stylesheet" href="/lernen/admin-v2.css?v=1">
 </head>
 <body>
   <header class="topbar">
@@ -30,12 +31,11 @@
         <h1 data-i18n="welcome">به صنف آنلاین خوش آمدید</h1>
         <p class="muted" data-i18n="welcomeText">آموزگاران و شاگردان از حساب شخصی خود وارد گروه درسی می‌شوند.</p>
         <form id="auth-form">
-          <label><span data-i18n="name">نام کامل</span><input id="full-name" autocomplete="name" minlength="2"></label>
-          <label><span data-i18n="email">ایمیل</span><input id="email" type="email" autocomplete="email" required dir="ltr"></label>
-          <label><span data-i18n="password">رمز عبور</span><input id="password" type="password" autocomplete="current-password" minlength="8" required dir="ltr"></label>
+          <label><span data-i18n="username">نام کاربری</span><input id="username" autocomplete="username" minlength="3" required dir="ltr"></label>
+          <label><span data-i18n="password">رمز عبور</span><input id="password" type="password" autocomplete="current-password" minlength="6" required dir="ltr"></label>
           <button id="auth-submit" class="primary" type="submit" data-i18n="login">ورود</button>
         </form>
-        <button id="auth-switch" class="text-button" type="button" data-i18n="needAccount">حساب ندارید؟ ثبت‌نام کنید</button>
+        <p class="login-help" data-i18n="loginHelp">نام کاربری و رمز عبور را از مسئول PEYWAND دریافت می‌کنید.</p>
         <p id="auth-message" class="status" role="status"></p>
       </div>
     </section>
@@ -71,13 +71,15 @@
       <section id="admin-view" class="admin-view hidden">
         <header class="admin-head"><button id="admin-back" class="mobile-back" type="button">‹</button><div><p class="eyebrow">PEYWAND</p><h2 data-i18n="manage">مدیریت گروه‌ها و کاربران</h2></div></header>
         <div class="admin-grid">
-          <form id="group-form" class="panel"><h3 data-i18n="newGroup">گروه جدید</h3><label><span data-i18n="groupName">نام گروه</span><input id="group-name" required maxlength="120"></label><label><span data-i18n="description">توضیحات</span><textarea id="group-description" maxlength="1000"></textarea></label><label><span data-i18n="teacher">آموزگار</span><select id="group-teacher"></select></label><button class="primary" type="submit" data-i18n="createGroup">ایجاد گروه</button><p id="group-form-status" class="status"></p></form>
+          <form id="user-form" class="panel"><h3 data-i18n="newUser">دسترسی جدید</h3><label><span data-i18n="username">نام کاربری</span><input id="new-username" required minlength="3" maxlength="32" pattern="[a-zA-Z0-9._-]+" dir="ltr"></label><label><span data-i18n="name">نام کامل</span><input id="new-full-name" required minlength="2" maxlength="120"></label><label><span data-i18n="newPassword">رمز عبور اولیه</span><input id="new-password" required minlength="6" maxlength="72" dir="ltr"></label><p class="field-help" data-i18n="passwordHelp">حداقل ۶ حرف؛ برای مثال Ali123</p><label><span data-i18n="role">نقش</span><select id="new-role"><option value="student" data-i18n="studentRole">شاگرد</option><option value="teacher" data-i18n="teacherRole">آموزگار</option></select></label><button class="primary" type="submit" data-i18n="createUser">ساختن دسترسی</button><p id="user-form-status" class="status"></p></form>
+          <form id="group-form" class="panel"><h3 data-i18n="newGroup">گروه جدید</h3><label><span data-i18n="groupName">نام گروه</span><input id="group-name" required maxlength="120"></label><label><span data-i18n="description">توضیحات</span><textarea id="group-description" maxlength="1000"></textarea></label><button class="primary" type="submit" data-i18n="createGroup">ایجاد گروه</button><p id="group-form-status" class="status"></p></form>
           <section class="panel"><h3 data-i18n="users">کاربران</h3><p class="muted small" data-i18n="usersHelp">کاربر ابتدا ثبت‌نام می‌کند؛ سپس نقش و گروه او را تعیین کنید.</p><div id="user-list" class="user-list"></div></section>
-          <form id="member-form" class="panel"><h3 data-i18n="addMember">افزودن عضو به گروه</h3><label><span data-i18n="group">گروه</span><select id="member-group" required></select></label><label><span data-i18n="person">شخص</span><select id="member-user" required></select></label><button class="primary" type="submit" data-i18n="add">افزودن</button><p id="member-form-status" class="status"></p></form>
+          <form id="member-form" class="panel"><h3 data-i18n="addMember">افزودن به گروه</h3><label><span data-i18n="group">گروه</span><select id="member-group" required></select></label><label><span data-i18n="accessType">نوع دسترسی</span><select id="assignment-role"><option value="student" data-i18n="studentRole">شاگرد</option><option value="teacher" data-i18n="teacherRole">آموزگار</option></select></label><label><span data-i18n="person">شخص</span><select id="member-user" required></select></label><button class="primary" type="submit" data-i18n="add">افزودن</button><p id="member-form-status" class="status"></p></form>
+          <section class="panel group-overview-panel"><h3 data-i18n="groupOverview">گروه‌ها و اعضا</h3><div id="group-admin-list" class="group-admin-list"></div></section>
         </div>
       </section>
     </section>
   </main>
-  <script src="/lernen/app.js?v=1" defer></script>
+  <script src="/lernen/app.js?v=2" defer></script>
 </body>
 </html>
