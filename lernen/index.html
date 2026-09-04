@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#071b17">
+  <meta name="robots" content="noindex,nofollow">
+  <title>PEYWAND Lernplattform</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="/lernen/styles.css?v=1">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="PEYWAND Webseite">
+      <img src="/peyvand-logo.webp" alt="PEYWAND">
+      <span><b>PEYWAND</b><small data-i18n="classroom">صنف آنلاین</small></span>
+    </a>
+    <div class="top-actions">
+      <select id="language" aria-label="Sprache">
+        <option value="fa">دری</option><option value="ps">پښتو</option><option value="de">Deutsch</option><option value="en">English</option>
+      </select>
+      <button id="logout" class="ghost hidden" type="button" data-i18n="logout">خروج</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="auth-view" class="auth-wrap">
+      <div class="auth-card">
+        <p class="eyebrow">PEYWAND</p>
+        <h1 data-i18n="welcome">به صنف آنلاین خوش آمدید</h1>
+        <p class="muted" data-i18n="welcomeText">آموزگاران و شاگردان از حساب شخصی خود وارد گروه درسی می‌شوند.</p>
+        <form id="auth-form">
+          <label><span data-i18n="name">نام کامل</span><input id="full-name" autocomplete="name" minlength="2"></label>
+          <label><span data-i18n="email">ایمیل</span><input id="email" type="email" autocomplete="email" required dir="ltr"></label>
+          <label><span data-i18n="password">رمز عبور</span><input id="password" type="password" autocomplete="current-password" minlength="8" required dir="ltr"></label>
+          <button id="auth-submit" class="primary" type="submit" data-i18n="login">ورود</button>
+        </form>
+        <button id="auth-switch" class="text-button" type="button" data-i18n="needAccount">حساب ندارید؟ ثبت‌نام کنید</button>
+        <p id="auth-message" class="status" role="status"></p>
+      </div>
+    </section>
+
+    <section id="app-view" class="app-layout hidden">
+      <aside class="sidebar">
+        <div class="profile-line"><span class="avatar" id="profile-avatar">P</span><div><b id="profile-name">PEYWAND</b><small id="profile-role"></small></div></div>
+        <div class="section-title"><h2 data-i18n="myGroups">گروه‌های من</h2><button id="refresh-groups" class="icon-button" type="button" aria-label="Aktualisieren">↻</button></div>
+        <div id="group-list" class="group-list"></div>
+        <p id="group-empty" class="empty hidden" data-i18n="noGroups">هنوز به هیچ گروهی اضافه نشده‌اید.</p>
+        <button id="admin-tab" class="admin-link hidden" type="button" data-i18n="manage">مدیریت گروه‌ها و کاربران</button>
+      </aside>
+
+      <section id="room-view" class="room blank">
+        <div id="room-placeholder" class="placeholder"><div class="bridge">⌁</div><h2 data-i18n="chooseGroup">یک گروه را انتخاب کنید</h2><p data-i18n="chooseGroupText">گفتگو، اعضا و صنف آنلاین در اینجا نمایش داده می‌شود.</p></div>
+        <div id="room-content" class="hidden">
+          <header class="room-header">
+            <div><button id="mobile-back" class="mobile-back" type="button">‹</button><h2 id="room-name"></h2><p id="room-description"></p></div>
+            <button id="video-open" class="video-button" type="button" data-i18n="startClass">شروع صنف صوتی/تصویری</button>
+          </header>
+          <div id="video-panel" class="video-panel hidden"><div class="video-toolbar"><b data-i18n="liveClass">صنف آنلاین</b><button id="video-close" type="button" data-i18n="close">بستن</button></div><iframe id="video-frame" title="PEYWAND Online-Unterricht" allow="camera; microphone; fullscreen; display-capture" referrerpolicy="no-referrer"></iframe></div>
+          <div class="room-grid">
+            <section class="chat-panel">
+              <div id="messages" class="messages"></div>
+              <form id="message-form" class="composer"><textarea id="message-body" maxlength="3000" rows="1" data-i18n-placeholder="messagePlaceholder" placeholder="پیام بنویسید…" required></textarea><button type="submit" aria-label="Senden">➤</button></form>
+              <p id="chat-status" class="status"></p>
+            </section>
+            <aside class="members-panel"><h3 data-i18n="members">اعضای گروه</h3><div id="member-list"></div></aside>
+          </div>
+        </div>
+      </section>
+
+      <section id="admin-view" class="admin-view hidden">
+        <header class="admin-head"><button id="admin-back" class="mobile-back" type="button">‹</button><div><p class="eyebrow">PEYWAND</p><h2 data-i18n="manage">مدیریت گروه‌ها و کاربران</h2></div></header>
+        <div class="admin-grid">
+          <form id="group-form" class="panel"><h3 data-i18n="newGroup">گروه جدید</h3><label><span data-i18n="groupName">نام گروه</span><input id="group-name" required maxlength="120"></label><label><span data-i18n="description">توضیحات</span><textarea id="group-description" maxlength="1000"></textarea></label><label><span data-i18n="teacher">آموزگار</span><select id="group-teacher"></select></label><button class="primary" type="submit" data-i18n="createGroup">ایجاد گروه</button><p id="group-form-status" class="status"></p></form>
+          <section class="panel"><h3 data-i18n="users">کاربران</h3><p class="muted small" data-i18n="usersHelp">کاربر ابتدا ثبت‌نام می‌کند؛ سپس نقش و گروه او را تعیین کنید.</p><div id="user-list" class="user-list"></div></section>
+          <form id="member-form" class="panel"><h3 data-i18n="addMember">افزودن عضو به گروه</h3><label><span data-i18n="group">گروه</span><select id="member-group" required></select></label><label><span data-i18n="person">شخص</span><select id="member-user" required></select></label><button class="primary" type="submit" data-i18n="add">افزودن</button><p id="member-form-status" class="status"></p></form>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script src="/lernen/app.js?v=1" defer></script>
+</body>
+</html>
