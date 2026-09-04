@@ -1,0 +1,20 @@
+{
+  "id": "/lernen/",
+  "name": "PEYWAND Lernplattform",
+  "short_name": "PEYWAND",
+  "description": "Geschützte Lerngruppen, Chat und Online-Unterricht von PEYWAND.",
+  "lang": "fa",
+  "dir": "auto",
+  "start_url": "/lernen/?source=app",
+  "scope": "/lernen/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#061713",
+  "theme_color": "#071b17",
+  "categories": ["education", "productivity", "social"],
+  "icons": [
+    {"src": "/lernen/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "/lernen/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}

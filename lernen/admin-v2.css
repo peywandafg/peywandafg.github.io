@@ -11,4 +11,5 @@
 .assignment-chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:6px 8px;color:var(--muted);font-size:11px}
 .assignment-chip b{color:var(--text)}
 .assignment-chip button{border:0;background:none;color:var(--danger);padding:0 2px;cursor:pointer}
-@media(max-width:760px){.assignment-section{grid-template-columns:1fr}.group-overview-panel{grid-column:auto}}
+.install-app{border-color:rgba(229,198,108,.45);color:var(--gold);font-weight:800;white-space:nowrap}
+@media(max-width:760px){.assignment-section{grid-template-columns:1fr}.group-overview-panel{grid-column:auto}.install-app{max-width:92px;padding:0 9px;font-size:10px}}
