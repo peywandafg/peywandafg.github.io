@@ -921,7 +921,14 @@
     timer = setTimeout(applyAll, 100);
   }
 
-  document.addEventListener("click", schedule);
+  document.addEventListener("click", event => {
+    schedule();
+    if (event.target.closest?.('[role="option"]')) {
+      setTimeout(applyAll,350);
+      setTimeout(applyAll,900);
+      setTimeout(applyAll,1600);
+    }
+  });
   document.addEventListener("change", schedule);
   new MutationObserver(schedule).observe(document.documentElement, { childList: true, subtree: true });
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", applyAll);

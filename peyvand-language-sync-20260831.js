@@ -15,7 +15,9 @@
       contact:"Kontaktperson", email:"E-Mail schreiben", whatsapp:"WhatsApp öffnen",
       officialKicker:"Offiziell bestätigt", teamTitle:"Unser PEYWAND-Team",
       teamEmpty:"Aktive Teammitglieder werden hier mit ihrem vollständigen Namen veröffentlicht.",
-      company:"Unternehmen / Arbeitgeber", paperwork:"Hilfe in Deutschland", teamButton:"Offizielles PEYWAND-Team ansehen"
+      company:"Unternehmen / Arbeitgeber", paperwork:"Hilfe in Deutschland", teamButton:"Offizielles PEYWAND-Team ansehen",
+      firstLanguage:"Sprache ist der erste Schritt", trust:["Sprache","Studium","Ausbildung","Unternehmen"],
+      companyNote:"Gute Vermittlung beginnt mit klaren Erwartungen und sorgfältiger Prüfung.", companyFields:["Unternehmen","Ansprechperson","E-Mail","Telefon (optional)","Welche Profile suchen Sie?","Weitere Informationen (optional)"], companyPlaceholder:"Beruf, Anzahl und wichtige Voraussetzungen", companyConsent:"Ich stimme zu, dass die Unternehmensangaben zur Bearbeitung der Anfrage gespeichert und zur Kontaktaufnahme verwendet werden."
     },
     en: {
       adviceKicker:"Personal consultation", germanyNav:"Help in Germany",
@@ -25,7 +27,9 @@
       contact:"Contact person", email:"Send email", whatsapp:"Open WhatsApp",
       officialKicker:"Officially confirmed", teamTitle:"Our PEYWAND team",
       teamEmpty:"Active team members are listed here by their full name.",
-      company:"Company / employer", paperwork:"Help in Germany", teamButton:"View the official PEYWAND team"
+      company:"Company / employer", paperwork:"Help in Germany", teamButton:"View the official PEYWAND team",
+      firstLanguage:"Language is the first step", trust:["Language","University study","Vocational training","Companies"],
+      companyNote:"Good connections begin with clear expectations and careful review.", companyFields:["Company","Contact person","Email","Phone (optional)","Which profiles are you looking for?","Additional information (optional)"], companyPlaceholder:"Role, number of people and important requirements", companyConsent:"I agree that the company information may be stored to process the enquiry and used to contact me."
     },
     fa: {
       adviceKicker:"مشاوره شخصی", germanyNav:"کمک در آلمان",
@@ -35,7 +39,9 @@
       contact:"مسئول تماس", email:"ارسال ایمیل", whatsapp:"باز کردن واتساپ",
       officialKicker:"تأییدشده رسمی", teamTitle:"تیم رسمی پیوند",
       teamEmpty:"اعضای فعال تیم با نام کامل در این بخش معرفی می‌شوند.",
-      company:"شرکت / کارفرما", paperwork:"کمک در آلمان", teamButton:"مشاهده تیم رسمی پیوند"
+      company:"شرکت / کارفرما", paperwork:"کمک در آلمان", teamButton:"مشاهده تیم رسمی پیوند",
+      firstLanguage:"زبان نخستین گام است", trust:["زبان","تحصیل","آوسبیلدونگ","شرکت‌ها"],
+      companyNote:"ارتباط خوب با توقعات روشن و بررسی دقیق آغاز می‌شود.", companyFields:["نام شرکت","شخص تماس","ایمیل","شماره تماس (اختیاری)","به کدام پروفایل‌ها نیاز دارید؟","معلومات بیشتر (اختیاری)"], companyPlaceholder:"رشته، تعداد و شرایط مهم", companyConsent:"می‌پذیرم که معلومات شرکت برای بررسی درخواست ذخیره و برای تماس استفاده شود."
     },
     ps: {
       adviceKicker:"شخصي مشوره", germanyNav:"په آلمان کې مرسته",
@@ -45,7 +51,9 @@
       contact:"د اړیکې مسئول", email:"برېښنالیک", whatsapp:"واټساپ پرانیزئ",
       officialKicker:"رسمي تایید شوی", teamTitle:"د پیوند رسمي ټیم",
       teamEmpty:"فعال ټیم غړي دلته په خپل بشپړ نوم معرفي کېږي.",
-      company:"شرکت / کار ورکوونکی", paperwork:"په آلمان کې مرسته", teamButton:"د پیوند رسمي ټیم وګورئ"
+      company:"شرکت / کار ورکوونکی", paperwork:"په آلمان کې مرسته", teamButton:"د پیوند رسمي ټیم وګورئ",
+      firstLanguage:"ژبه لومړی ګام دی", trust:["ژبه","پوهنتون","مسلکي روزنه","شرکتونه"],
+      companyNote:"ښه اړیکه له روښانه تمو او دقیقې ارزونې څخه پیلېږي.", companyFields:["د شرکت نوم","د اړیکې شخص","برېښنالیک","تلیفون (اختیاري)","تاسې کوم کسان غواړئ؟","نور معلومات (اختیاري)"], companyPlaceholder:"دنده، شمېر او مهم شرطونه", companyConsent:"زه منم چې د شرکت معلومات د غوښتنې د ارزونې او اړیکې لپاره خوندي شي."
     }
   };
 
@@ -61,6 +69,23 @@
   function set(selector, value) {
     const node = document.querySelector(selector);
     if (node && value && node.textContent !== value) node.textContent = value;
+  }
+
+  function translateCompanyForm(copy) {
+    const form = document.querySelector("#unternehmen form");
+    if (!form) return;
+    const names = ["company_name","contact_name","email","company_phone","roles_needed","company_message"];
+    names.forEach((name,index) => {
+      const field = form.elements.namedItem(name);
+      const label = field?.closest("label")?.querySelector("span");
+      if (label) label.textContent = copy.companyFields[index];
+    });
+    const roles = form.elements.namedItem("roles_needed");
+    if (roles) roles.placeholder = copy.companyPlaceholder;
+    const consent = form.elements.namedItem("company_consent")?.closest("label")?.querySelector("span");
+    if (consent) consent.textContent = copy.companyConsent;
+    const note = [...form.querySelectorAll("p")].find(node => /Vermittlung|connections|ارتباط|اړیکه/.test(node.textContent));
+    if (note) note.textContent = copy.companyNote;
   }
 
   function localized(prefix, lang) {
@@ -139,6 +164,14 @@
     current = detect(visible) || current;
     const lang = current;
     const copy = ui[lang];
+
+    set("#peyvand-sprache .section-kicker", copy.firstLanguage);
+    const trustChips = [...document.querySelectorAll(".hero-luxury .peyvand-trust-grid .trust-chip")].filter(chip => !chip.id);
+    trustChips.slice(0,4).forEach((chip,index) => {
+      const label = chip.querySelector("span:last-child") || chip;
+      if (copy.trust[index]) label.textContent = copy.trust[index];
+    });
+    translateCompanyForm(copy);
 
     const teamButton = ensureTeamButton();
     if (teamButton) {
