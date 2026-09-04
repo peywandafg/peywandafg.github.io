@@ -1,4 +1,8 @@
 (() => {
+  if(location.pathname.startsWith("/admin")){
+    const css=document.createElement("link");css.rel="stylesheet";css.href="/admin-navigation.css?v=1";document.head.append(css);
+    const script=document.createElement("script");script.src="/admin-navigation.js?v=1";script.defer=true;document.head.append(script);
+  }
   const labels={fa:"صنف",ps:"ټولګی",de:"Lernen",en:"Classroom"};
   function current(){const value=document.querySelector('[data-slot="select-value"]')?.textContent||"";if(value.includes("دری")||value.includes("فارسی"))return"fa";if(value.includes("پښتو"))return"ps";if(value.includes("English"))return"en";return"de"}
   function addStyle(){if(document.querySelector("#peyvand-classroom-entry-style"))return;const style=document.createElement("style");style.id="peyvand-classroom-entry-style";style.textContent='.peyvand-classroom-entry{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:38px;padding:0 13px;border:1px solid rgba(229,198,108,.45);border-radius:999px;background:rgba(229,198,108,.1);color:#f4d67f!important;font:800 11px/1 Arial,sans-serif;text-decoration:none;white-space:nowrap}.peyvand-classroom-entry:hover{background:rgba(229,198,108,.18)}.peyvand-classroom-entry .book{font-size:16px}.peyvand-classroom-admin-entry{display:flex;margin:18px 0 0;width:100%;min-height:46px}@media(max-width:600px){header .peyvand-classroom-entry{width:38px;padding:0}.peyvand-classroom-entry .entry-label{display:none}}';document.head.append(style)}
