@@ -18,6 +18,7 @@
       company:"Unternehmen / Arbeitgeber", paperwork:"Hilfe in Deutschland", teamButton:"Offizielles PEYWAND-Team ansehen",
       firstLanguage:"Sprache ist der erste Schritt", trust:["Sprache","Studium","Ausbildung","Unternehmen"],
       companyNote:"Gute Vermittlung beginnt mit klaren Erwartungen und sorgfältiger Prüfung.", companyFields:["Unternehmen","Ansprechperson","E-Mail","Telefon (optional)","Welche Profile suchen Sie?","Weitere Informationen (optional)"], companyPlaceholder:"Beruf, Anzahl und wichtige Voraussetzungen", companyConsent:"Ich stimme zu, dass die Unternehmensangaben zur Bearbeitung der Anfrage gespeichert und zur Kontaktaufnahme verwendet werden."
+      ,pathNav:"Wege & Ziele", offerKickers:["Familie","Deutschland","Unternehmen"], footerSlogan:"SPRACHE · BILDUNG · ZUKUNFT", apply:"Bewerben", classroom:"Lernen"
     },
     en: {
       adviceKicker:"Personal consultation", germanyNav:"Help in Germany",
@@ -30,6 +31,7 @@
       company:"Company / employer", paperwork:"Help in Germany", teamButton:"View the official PEYWAND team",
       firstLanguage:"Language is the first step", trust:["Language","University study","Vocational training","Companies"],
       companyNote:"Good connections begin with clear expectations and careful review.", companyFields:["Company","Contact person","Email","Phone (optional)","Which profiles are you looking for?","Additional information (optional)"], companyPlaceholder:"Role, number of people and important requirements", companyConsent:"I agree that the company information may be stored to process the enquiry and used to contact me."
+      ,pathNav:"Pathways & goals", offerKickers:["Family","Germany","Companies"], footerSlogan:"LANGUAGE · EDUCATION · FUTURE", apply:"Apply", classroom:"Classroom"
     },
     fa: {
       adviceKicker:"مشاوره شخصی", germanyNav:"کمک در آلمان",
@@ -42,6 +44,7 @@
       company:"شرکت / کارفرما", paperwork:"کمک در آلمان", teamButton:"مشاهده تیم رسمی پیوند",
       firstLanguage:"زبان نخستین گام است", trust:["زبان","تحصیل","آوسبیلدونگ","شرکت‌ها"],
       companyNote:"ارتباط خوب با توقعات روشن و بررسی دقیق آغاز می‌شود.", companyFields:["نام شرکت","شخص تماس","ایمیل","شماره تماس (اختیاری)","به کدام پروفایل‌ها نیاز دارید؟","معلومات بیشتر (اختیاری)"], companyPlaceholder:"رشته، تعداد و شرایط مهم", companyConsent:"می‌پذیرم که معلومات شرکت برای بررسی درخواست ذخیره و برای تماس استفاده شود."
+      ,pathNav:"مسیرها و هدف‌ها", offerKickers:["خانواده","آلمان","شرکت‌ها"], footerSlogan:"زبان · آموزش · آینده", apply:"ثبت درخواست", classroom:"صنف"
     },
     ps: {
       adviceKicker:"شخصي مشوره", germanyNav:"په آلمان کې مرسته",
@@ -54,6 +57,7 @@
       company:"شرکت / کار ورکوونکی", paperwork:"په آلمان کې مرسته", teamButton:"د پیوند رسمي ټیم وګورئ",
       firstLanguage:"ژبه لومړی ګام دی", trust:["ژبه","پوهنتون","مسلکي روزنه","شرکتونه"],
       companyNote:"ښه اړیکه له روښانه تمو او دقیقې ارزونې څخه پیلېږي.", companyFields:["د شرکت نوم","د اړیکې شخص","برېښنالیک","تلیفون (اختیاري)","تاسې کوم کسان غواړئ؟","نور معلومات (اختیاري)"], companyPlaceholder:"دنده، شمېر او مهم شرطونه", companyConsent:"زه منم چې د شرکت معلومات د غوښتنې د ارزونې او اړیکې لپاره خوندي شي."
+      ,pathNav:"لارې او موخې", offerKickers:["کورنۍ","آلمان","شرکتونه"], footerSlogan:"ژبه · زده کړه · راتلونکی", apply:"غوښتنه ولېږئ", classroom:"ټولګی"
     }
   };
 
@@ -84,7 +88,7 @@
     if (roles) roles.placeholder = copy.companyPlaceholder;
     const consent = form.elements.namedItem("company_consent")?.closest("label")?.querySelector("span");
     if (consent) consent.textContent = copy.companyConsent;
-    const note = [...form.querySelectorAll("p")].find(node => /Vermittlung|connections|ارتباط|اړیکه/.test(node.textContent));
+    const note = [...document.querySelectorAll("#unternehmen p")].find(node => /Vermittlung|connections|ارتباط|اړیکه/.test(node.textContent));
     if (note) note.textContent = copy.companyNote;
   }
 
@@ -165,6 +169,14 @@
     const lang = current;
     const copy = ui[lang];
 
+    const navLinks = document.querySelectorAll("nav a");
+    if (navLinks[1]) navLinks[1].textContent = copy.pathNav;
+    ["#peyvand-offer-family","#peyvand-offer-germany","#peyvand-offer-company"].forEach((selector,index) => set(selector+" p:first-of-type",copy.offerKickers[index]));
+    const entryLabel = document.querySelector(".peyvand-classroom-entry .entry-label");
+    if (entryLabel) entryLabel.textContent = copy.classroom;
+    const footerSlogan = [...document.querySelectorAll("footer p")].find(node => /SPRACHE|LANGUAGE|زبان|ژبه/.test(node.textContent));
+    if (footerSlogan) footerSlogan.textContent = copy.footerSlogan;
+    document.querySelectorAll('footer a[href="#bewerbung"]').forEach(link => link.textContent = copy.apply);
     set("#peyvand-sprache .section-kicker", copy.firstLanguage);
     const trustChips = [...document.querySelectorAll(".hero-luxury .peyvand-trust-grid .trust-chip")].filter(chip => !chip.id);
     trustChips.slice(0,4).forEach((chip,index) => {

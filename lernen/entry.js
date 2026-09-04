@@ -3,7 +3,7 @@
     const css=document.createElement("link");css.rel="stylesheet";css.href="/admin-navigation.css?v=1";document.head.append(css);
     const script=document.createElement("script");script.src="/admin-navigation.js?v=1";script.defer=true;document.head.append(script);
   }else if(!document.querySelector('script[src^="/peyvand-language-sync-20260831.js"]')){
-    const script=document.createElement("script");script.src="/peyvand-language-sync-20260831.js?v=3";script.defer=true;document.head.append(script);
+    const script=document.createElement("script");script.src="/peyvand-language-sync-20260831.js?v=4";script.defer=true;document.head.append(script);
   }
   const labels={fa:"صنف",ps:"ټولګی",de:"Lernen",en:"Classroom"};
   function current(){const value=document.querySelector('[data-slot="select-value"]')?.textContent||"";if(value.includes("دری")||value.includes("فارسی"))return"fa";if(value.includes("پښتو"))return"ps";if(value.includes("English"))return"en";return"de"}
