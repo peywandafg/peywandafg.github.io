@@ -242,7 +242,15 @@
         header .brand-logo__frame {
           width: 92px !important;
           height: 62px !important;
+          flex: 0 0 92px !important;
           border-radius: 16px !important;
+          background: #f4edda url('/peyvand-logo.webp') center / contain no-repeat !important;
+        }
+        header .brand-logo__image {
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: contain !important;
+          opacity: 1 !important;
         }
         header .brand-wordmark strong {
           font-size: 23px !important;
@@ -290,13 +298,31 @@
           display: block !important;
           width: 100% !important;
           max-width: 520px !important;
+          min-height: 260px !important;
           padding-left: 0 !important;
+          align-self: center !important;
           justify-self: center !important;
+          position: relative !important;
+          z-index: 5 !important;
           visibility: visible !important;
           opacity: 1 !important;
         }
         .hero-luxury .logo-card-3d {
+          display: block !important;
           width: 100% !important;
+          aspect-ratio: 3 / 2 !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+          background: #f4edda url('/peyvand-logo.webp') center / contain no-repeat !important;
+        }
+        .hero-luxury .logo-card-3d img {
+          display: block !important;
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: contain !important;
+          background: #f4edda !important;
+          visibility: visible !important;
+          opacity: 1 !important;
         }
         .peyvand-classroom-entry {
           height: 40px !important;
@@ -312,6 +338,7 @@
         header .brand-logo__frame {
           width: 76px !important;
           height: 52px !important;
+          flex-basis: 76px !important;
         }
         header .brand-wordmark {
           display: none !important;
