@@ -698,9 +698,6 @@
     }
   }
 
-  let heroLogoHome;
-  let heroLogoNext;
-
   function arrangeMobileHero() {
     const grid = document.querySelector(".hero-luxury > .relative.mx-auto.grid");
     const text = grid?.firstElementChild;
@@ -708,18 +705,13 @@
     const heading = text?.querySelector("h1");
     if (!grid || !text || !logo || !heading) return;
 
-    if (!heroLogoHome) {
-      heroLogoHome = grid;
-      heroLogoNext = logo.nextSibling;
-    }
-
     if (window.matchMedia("(max-width: 767px)").matches) {
       if (logo.parentElement !== text) {
         heading.insertAdjacentElement("afterend", logo);
         logo.classList.add("peyvand-mobile-hero-logo");
       }
-    } else if (logo.parentElement !== heroLogoHome) {
-      heroLogoHome.insertBefore(logo, heroLogoNext);
+    } else if (logo.parentElement !== grid) {
+      grid.appendChild(logo);
       logo.classList.remove("peyvand-mobile-hero-logo");
     }
   }
