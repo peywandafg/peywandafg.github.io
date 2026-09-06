@@ -113,8 +113,8 @@
         gap: 8px;
         margin-right: 4px;
       }
-      #peyvand-social-desktop a,
-      #peyvand-social-desktop span {
+      #peyvand-social-desktop > a,
+      #peyvand-social-desktop > span {
         position: static !important;
         transform: none !important;
         animation: none !important;
@@ -189,11 +189,17 @@
         stroke: none;
       }
       #peyvand-social-desktop .peyvand-social-label {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-        clip: rect(0,0,0,0);
+        position: absolute !important;
+        width: 1px !important;
+        min-width: 1px !important;
+        max-width: 1px !important;
+        height: 1px !important;
+        min-height: 1px !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        clip: rect(0,0,0,0) !important;
+        clip-path: inset(50%) !important;
+        white-space: nowrap !important;
       }
       #peyvand-social-mobile-menu,
       #peyvand-mobile-menu-button {
@@ -226,6 +232,97 @@
         .hero-luxury .logo-stage .logo-float-tag {
           animation: none !important;
           transform: none !important;
+        }
+      }
+      @media (min-width: 1024px) {
+        header > div {
+          height: 78px !important;
+          max-width: 1440px !important;
+        }
+        header .brand-logo__frame {
+          width: 92px !important;
+          height: 62px !important;
+          border-radius: 16px !important;
+        }
+        header .brand-wordmark strong {
+          font-size: 23px !important;
+        }
+        header .brand-wordmark small {
+          font-size: 9px !important;
+        }
+        #peyvand-social-desktop {
+          gap: 7px !important;
+          flex: 0 0 auto !important;
+        }
+        #peyvand-social-desktop > a,
+        #peyvand-social-desktop > span {
+          width: 36px !important;
+          min-width: 36px !important;
+          max-width: 36px !important;
+          height: 36px !important;
+          min-height: 36px !important;
+          flex-basis: 36px !important;
+        }
+        #peyvand-social-desktop .social-brand-logo {
+          width: 18px !important;
+          height: 18px !important;
+          max-width: 18px !important;
+        }
+        .hero-luxury > .relative.mx-auto.grid {
+          min-height: auto !important;
+          max-width: 1440px !important;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+          gap: clamp(32px, 5vw, 80px) !important;
+          padding-top: 72px !important;
+          padding-bottom: 76px !important;
+        }
+        .hero-luxury > .relative.mx-auto.grid > div:first-child {
+          max-width: 650px !important;
+          min-width: 0 !important;
+        }
+        .hero-luxury h1 {
+          font-size: clamp(48px, 4.4vw, 68px) !important;
+          line-height: 1.08 !important;
+          letter-spacing: -.025em !important;
+          overflow-wrap: anywhere;
+        }
+        .hero-luxury .logo-stage {
+          display: block !important;
+          width: 100% !important;
+          max-width: 520px !important;
+          padding-left: 0 !important;
+          justify-self: center !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+        }
+        .hero-luxury .logo-card-3d {
+          width: 100% !important;
+        }
+        .peyvand-classroom-entry {
+          height: 40px !important;
+          padding: 0 14px !important;
+          font-size: 12px !important;
+        }
+      }
+      @media (min-width: 1024px) and (max-width: 1279px) {
+        header > div {
+          padding-left: 24px !important;
+          padding-right: 24px !important;
+        }
+        header .brand-logo__frame {
+          width: 76px !important;
+          height: 52px !important;
+        }
+        header .brand-wordmark {
+          display: none !important;
+        }
+        .hero-luxury > .relative.mx-auto.grid {
+          gap: 34px !important;
+          padding-left: 34px !important;
+          padding-right: 34px !important;
+        }
+        .hero-luxury h1 {
+          font-size: clamp(44px, 5vw, 56px) !important;
         }
       }
       #kontakt aside {
