@@ -701,9 +701,29 @@
   function arrangeMobileHero() {
     const grid = document.querySelector(".hero-luxury > .relative.mx-auto.grid");
     const text = grid?.firstElementChild;
-    const logo = grid?.querySelector(".logo-stage");
+    let logo = grid?.querySelector(".logo-stage");
     const heading = text?.querySelector("h1");
-    if (!grid || !text || !logo || !heading) return;
+    if (!grid || !text || !heading) return;
+
+    // React ersetzt den Hero beim automatischen Sprachstart. Falls dabei nur
+    // auf breiten Ansichten das Logo verloren geht, bauen wir es dort wieder
+    // vollständig auf. Die mobile Darstellung wird davon nicht berührt.
+    if (!logo && window.matchMedia("(min-width: 768px)").matches) {
+      logo = document.createElement("div");
+      logo.className = "logo-stage relative lg:pl-8";
+      logo.setAttribute("data-peyvand-desktop-logo", "restored");
+      logo.innerHTML = `
+        <div class="logo-orbit logo-orbit--one"></div>
+        <div class="logo-orbit logo-orbit--two"></div>
+        <div class="logo-float-tag logo-float-tag--afg">AFG</div>
+        <div class="logo-float-tag logo-float-tag--deu">DEU</div>
+        <figure class="logo-card-3d relative overflow-hidden rounded-[2.25rem] border border-white/20 bg-white/8 p-2.5 shadow-[0_45px_110px_rgba(0,0,0,.48)] backdrop-blur-xl sm:p-3.5">
+          <img src="/peyvand-logo.webp" width="1400" height="933" loading="eager" alt="PEYWAND Logo" class="aspect-[3/2] w-full rounded-[1.5rem] object-cover">
+        </figure>`;
+      grid.appendChild(logo);
+    }
+
+    if (!logo) return;
 
     if (window.matchMedia("(max-width: 767px)").matches) {
       if (logo.parentElement !== text) {
