@@ -1083,6 +1083,60 @@
     setText(card.querySelector(".pr-body"),result);
   }
 
+
+  const quranPathTranslations = {
+    de:{label:"Koranunterricht für Kinder",title:"Koranunterricht für Kinder",body:"Sie suchen für Ihr Kind eine gute Lehrerin oder einen guten Lehrer? Wir helfen Ihnen, geeigneten Unterricht für das Gebet, das Lesen des Korans und das Auswendiglernen zu finden. Für Töchter vermitteln wir auf Wunsch eine Lehrerin.",action:"Unterricht anfragen"},
+    en:{label:"Quran lessons for children",title:"Quran lessons for children",body:"Are you looking for a good female or male teacher for your child? We help you find suitable lessons in prayer, Quran reading and memorisation. A female teacher can be arranged for daughters upon request.",action:"Request lessons"},
+    fa:{label:"آموزش قرآن برای کودکان",title:"آموزش قرآن برای کودکان",body:"آیا برای فرزند خود به دنبال استاد خوب زن یا مرد هستید؟ ما برای آموزش نماز، روخوانی قرآن و حفظ قرآن، استاد مناسب پیدا می‌کنیم. برای دختران، در صورت درخواست، استاد زن معرفی می‌شود.",action:"درخواست آموزش"},
+    ps:{label:"ماشومانو ته د قرآن زده کړه",title:"ماشومانو ته د قرآن زده کړه",body:"ایا د خپل ماشوم لپاره د یوې ښې ښوونکې یا ښوونکي په لټه کې یاست؟ موږ د لمانځه، د قرآن لوستلو او حفظ لپاره د مناسب ښوونکي په موندلو کې مرسته کوو. د لوڼو لپاره د غوښتنې له مخې ښځینه ښوونکې برابروو.",action:"د زده کړې غوښتنه"}
+  };
+
+  function renderQuranPath() {
+    const lang=language();
+    const copy=quranPathTranslations[lang];
+    const form=document.querySelector("#bewerbung form");
+    const pathway=form?.elements.namedItem("pathway");
+    if(pathway){
+      let option=[...pathway.options].find(item=>item.value==="quran_lessons");
+      if(!option){
+        option=document.createElement("option");
+        option.value="quran_lessons";
+        pathway.append(option);
+      }
+      option.textContent=copy.label;
+    }
+
+    const pathGrid=document.querySelector("#wege .peyvand-path-grid");
+    if(pathGrid){
+      let card=document.querySelector("#peyvand-quran");
+      if(!card){
+        card=document.createElement("article");
+        card.id="peyvand-quran";
+        card.className="journey-path rounded-[2rem] p-6";
+        card.innerHTML='<span class="text-xs font-black tracking-[.18em] text-[#dfbd67]">05</span><h3 class="mt-7 font-serif text-2xl text-[#fff7e8]"></h3><p class="mt-3 text-sm leading-7 text-[#b9cbc3]"></p><a href="#bewerbung" class="mt-6 inline-flex items-center text-sm font-bold text-[#efd07a]"></a>';
+        pathGrid.append(card);
+      }
+      setText(card.querySelector("h3"),copy.title);
+      setText(card.querySelector("p"),copy.body);
+      setText(card.querySelector("a"),copy.action);
+      card.querySelector("a").onclick=()=>{
+        const option=[...document.querySelectorAll('#bewerbung select[name="pathway"] option')].find(item=>item.value==="quran_lessons");
+        if(option){
+          option.parentElement.value="quran_lessons";
+          option.parentElement.dispatchEvent(new Event("change",{bubbles:true}));
+        }
+      };
+    }
+
+    const guidance={
+      de:["Für den Einstieg werden Alter, bisherige Kenntnisse und gewünschte Lernziele des Kindes geprüft. Danach kann eine passende Lehrerin oder ein passender Lehrer für Gebet, Koranlesen und Auswendiglernen ausgewählt werden."],
+      en:["We first review the child's age, current knowledge and learning goals. A suitable female or male teacher can then be selected for prayer, Quran reading and memorisation."],
+      fa:["نخست سن، دانش فعلی و هدف‌های آموزشی کودک بررسی می‌شود. سپس برای نماز، روخوانی و حفظ قرآن، استاد زن یا مرد مناسب انتخاب می‌گردد."],
+      ps:["لومړی د ماشوم عمر، اوسنۍ پوهه او د زده کړې موخې ارزول کېږي. وروسته د لمانځه، قرآن لوستلو او حفظ لپاره مناسبه ښځینه یا نارینه ښوونکې ټاکل کېږي."]
+    };
+    if(typeof pathwayGuidance!=="undefined"&&pathwayGuidance[lang]) pathwayGuidance[lang].paths.quran_lessons=guidance[lang];
+  }
+
   function accessToken() {
     for (let index = 0; index < localStorage.length; index++) {
       const key = localStorage.key(index);
@@ -1148,6 +1202,7 @@
     renderSocials().catch(() => {});
     try { applyTranslations(); } catch {}
     try { translateProfileForm(); } catch {}
+    try { renderQuranPath(); } catch {}
     try { renderPathwayRecommendation(); } catch {}
     try { arrangeMobileHero(); } catch {}
     try { improveBeginnerJourney(); } catch {}
