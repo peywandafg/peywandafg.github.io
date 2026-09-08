@@ -983,6 +983,106 @@
     });
   }
 
+
+  const pathwayGuidance = {
+    de: {
+      eyebrow:"Deine erste Orientierung", title:"Dein möglicher nächster Schritt",
+      waiting:"Wähle bitte Altersgruppe, Bildungsstand, Deutschniveau und Ziel aus. Danach erscheint hier sofort deine persönliche Orientierung.",
+      first:"Sprache zuerst", review:"Profil prüfen", next:"Empfohlener nächster Schritt",
+      note:"Diese automatische Einschätzung ist eine erste Orientierung. Unser Team prüft dein Profil nach dem Absenden persönlich. Sie ist keine Visa-, Zulassungs- oder Erfolgsgarantie.",
+      paths:{
+        ausbildung:["Für eine Ausbildung ist dein sinnvollster erster Schritt, dein Deutsch gezielt bis mindestens B1 und je nach Beruf bis B2 aufzubauen. Danach können Schulabschluss, Berufswunsch und passende Ausbildungswege geprüft werden.","Du hast bereits eine wichtige sprachliche Grundlage. Als Nächstes sollten dein Schulabschluss, dein Berufswunsch und die konkreten Sprachanforderungen möglicher Ausbildungen geprüft werden.","Dein Deutschniveau ist eine gute Grundlage. Als Nächstes können passende Ausbildungsberufe, dein Schulabschluss und deine Bewerbungsunterlagen sorgfältig geprüft werden."],
+        studium:["Für ein Studium solltest du zuerst dein Deutsch in Richtung B2 oder C1 weiterentwickeln. Gleichzeitig muss geprüft werden, ob dein Schul- oder Hochschulabschluss für den gewünschten Studiengang passt.","Du näherst dich dem üblichen Sprachniveau vieler Studienwege. Als Nächstes sollten dein Abschluss, der gewünschte Studiengang und die genauen Anforderungen der Hochschule geprüft werden.","Dein Deutschniveau ist eine gute Grundlage. Jetzt sollten Hochschulzugang, Studiengang, Zeugnisse und Bewerbungsfristen eingeordnet werden."],
+        arbeit:["Für deinen Weg in die Arbeit ist Sprache zuerst besonders wichtig. Danach können Berufserfahrung, vorhandene Qualifikationen und eine mögliche Anerkennung geprüft werden.","Du hast eine wichtige sprachliche Grundlage. Als Nächstes sollten Berufserfahrung, Qualifikationen, Anerkennung und die Anforderungen passender Arbeitgeber geprüft werden.","Dein Deutschniveau bietet eine gute Grundlage. Jetzt können dein Berufsprofil, die Anerkennung deiner Qualifikation und passende Beschäftigungsmöglichkeiten geprüft werden."],
+        familiennachzug:["Beginne mit einem gezielten Deutschkurs. Welcher Sprachnachweis und welche weiteren Unterlagen nötig sind, hängt von deinem persönlichen Fall ab und muss sorgfältig geprüft werden.","Du hast bereits Deutschkenntnisse. Als Nächstes sollten der erforderliche Sprachnachweis und die Unterlagen für deinen persönlichen Fall geprüft werden.","Deine Sprachkenntnisse sind eine gute Grundlage. Nun sollten die für deinen persönlichen Fall erforderlichen Nachweise und Unterlagen geprüft werden."],
+        private_lessons:["Ein persönlicher Lernplan mit passenden Unterrichtszeiten ist ein sinnvoller erster Schritt. Nach einer kurzen Einstufung kann das richtige Startniveau festgelegt werden.","Nach einer kurzen Einstufung kann ein persönlicher Lernplan erstellt werden, der gezielt auf dein nächstes Deutschniveau vorbereitet.","Ein persönlicher Lernplan kann dich gezielt bei Fachsprache, Prüfungsvorbereitung oder sicherer Kommunikation unterstützen."],
+        paperwork_help:["Beschreibe im Nachrichtenfeld, bei welchem Brief oder Formular du Hilfe brauchst. Unser Team prüft, wie wir dich verständlich unterstützen können. PEYWAND bietet dabei keine Rechtsberatung."],
+        mitarbeit:["Ergänze im Nachrichtenfeld deine Qualifikation, Unterrichtserfahrung oder die Art deiner gewünschten Unterstützung. Unser Team prüft anschließend eine mögliche Zusammenarbeit."],
+        unsicher:["Das ist kein Problem. Sende dein Profil vollständig ab. Unser Team ordnet deine Angaben persönlich ein und erklärt dir, welcher nächste Schritt realistisch zu dir passt."]
+      }
+    },
+    en:{
+      eyebrow:"Your initial guidance",title:"Your possible next step",waiting:"Please select your age group, education, German level and goal. Your personal guidance will appear here immediately.",first:"Language first",review:"Review your profile",next:"Recommended next step",note:"This automated assessment provides initial guidance only. Our team will personally review your profile after submission. It is not a visa, admission or success guarantee.",
+      paths:{
+        ausbildung:["For vocational training, first build your German to at least B1 and, depending on the occupation, B2. Your education and suitable training routes can then be reviewed.","You already have an important language foundation. Your education, career goal and the language requirements of suitable programmes should now be reviewed.","Your German is a good foundation. Suitable occupations, your education and application documents can now be reviewed."],
+        studium:["For university study, first develop your German towards B2 or C1. Your qualifications must also be checked against the chosen programme.","You are approaching the language level used by many study routes. Your qualifications, programme and university requirements should now be reviewed.","Your German is a good foundation. University eligibility, certificates and application deadlines should now be reviewed."],
+        arbeit:["Language first is especially important for employment. Your experience, qualifications and possible recognition can then be reviewed.","You have an important language foundation. Your experience, qualifications, recognition and employer requirements should now be reviewed.","Your German is a good foundation. Your professional profile, recognition and suitable opportunities can now be reviewed."],
+        familiennachzug:["Start with a focused German course. Required language proof and documents depend on your individual case and must be checked carefully.","You already have German skills. Required language proof and documents for your individual case should now be reviewed.","Your language skills are a good foundation. The documents required for your individual case should now be reviewed."],
+        private_lessons:["A personal learning plan and short assessment are a useful first step.","A short assessment can create a plan for your next German level.","A personal plan can support specialist language, exam preparation or confident communication."],
+        paperwork_help:["Describe the letter or form in the message field. Our team will check how we can help you understand it. PEYWAND does not provide legal advice."],
+        mitarbeit:["Add your qualifications, teaching experience or intended support in the message field. Our team will review possible cooperation."],
+        unsicher:["That is no problem. Submit your complete profile and our team will personally assess which next step realistically suits you."]
+      }
+    },
+    fa:{
+      eyebrow:"راهنمایی ابتدایی شما",title:"گام احتمالی بعدی شما",waiting:"لطفاً گروه سنی، سطح تحصیلات، سطح زبان آلمانی و هدف خود را انتخاب کنید. سپس راهنمایی شخصی شما فوراً نمایش داده می‌شود.",first:"نخست زبان",review:"بررسی پروفایل",next:"گام بعدی پیشنهادی",note:"این ارزیابی خودکار فقط یک راهنمایی ابتدایی است. تیم ما پس از ارسال، پروفایل شما را شخصاً بررسی می‌کند. این ارزیابی تضمین ویزا، پذیرش یا موفقیت نیست.",
+      paths:{
+        ausbildung:["برای آوسبیلدونگ، نخست زبان آلمانی خود را دست‌کم تا B1 و بسته به رشته تا B2 برسانید. سپس مدرک تحصیلی و مسیرهای مناسب بررسی می‌شوند.","شما پایه مهم زبانی دارید. اکنون باید مدرک تحصیلی، هدف شغلی و شرایط زبان آوسبیلدونگ‌های مناسب بررسی شوند.","سطح زبان شما پایه خوبی است. اکنون می‌توان رشته‌های مناسب، مدرک تحصیلی و اسناد درخواست را بررسی کرد."],
+        studium:["برای تحصیل، نخست زبان آلمانی را به سوی B2 یا C1 پیش ببرید. هم‌زمان باید مناسب بودن مدرک شما بررسی شود.","شما به سطح زبان بسیاری از مسیرهای تحصیلی نزدیک شده‌اید. اکنون مدرک، رشته و شرایط دانشگاه باید بررسی شوند.","سطح زبان شما پایه خوبی است. اکنون شرایط ورود، رشته، اسناد و مهلت‌ها باید بررسی شوند."],
+        arbeit:["برای ورود به کار، نخست زبان بسیار مهم است. سپس تجربه کاری، مدارک و امکان تأیید آن‌ها بررسی می‌شود.","شما پایه مهم زبانی دارید. اکنون تجربه، مدارک، تأیید مدارک و شرایط کارفرما باید بررسی شوند.","سطح زبان شما پایه خوبی است. اکنون پروفایل کاری، تأیید مدرک و فرصت‌های مناسب بررسی می‌شوند."],
+        familiennachzug:["با یک کورس هدفمند آلمانی آغاز کنید. مدرک زبان و اسناد لازم به پرونده شخصی شما بستگی دارد.","شما از قبل آلمانی می‌دانید. اکنون مدرک زبان و اسناد لازم برای پرونده شما باید بررسی شوند.","دانش زبان شما پایه خوبی است. اکنون مدارک لازم برای پرونده شخصی‌تان باید بررسی شوند."],
+        private_lessons:["یک برنامه شخصی یادگیری و ارزیابی کوتاه، گام نخست خوبی است.","پس از ارزیابی کوتاه، برنامه شخصی برای سطح بعدی ساخته می‌شود.","برنامه شخصی می‌تواند برای زبان تخصصی و آمادگی امتحان کمک کند."],
+        paperwork_help:["در بخش پیام بنویسید برای کدام نامه یا فورم کمک می‌خواهید. تیم ما نوع کمک را بررسی می‌کند. PEYWAND مشاوره حقوقی ارائه نمی‌کند."],
+        mitarbeit:["در بخش پیام، تحصیلات، تجربه تدریس یا نوع همکاری خود را بنویسید. تیم ما امکان همکاری را بررسی می‌کند."],
+        unsicher:["مشکلی نیست. پروفایل کامل خود را بفرستید تا تیم ما گام مناسب را شخصاً بررسی کند."]
+      }
+    },
+    ps:{
+      eyebrow:"ستاسو لومړنۍ لارښوونه",title:"ستاسو احتمالي بل ګام",waiting:"مهرباني وکړئ د عمر ډله، د زده کړو کچه، د آلماني ژبې کچه او خپله موخه وټاکئ. وروسته به شخصي لارښوونه سمدستي ښکاره شي.",first:"لومړی ژبه",review:"د پروفایل ارزونه",next:"وړاندیز شوی بل ګام",note:"دا اتومات ارزونه یوازې لومړنۍ لارښوونه ده. زموږ ټیم به له لېږلو وروسته ستاسو پروفایل په شخصي ډول وڅېړي. دا د ویزې، منلو یا بریا تضمین نه دی.",
+      paths:{
+        ausbildung:["د آوسبیلدونګ لپاره لومړی خپله آلماني لږ تر لږه B1 او د مسلک له مخې B2 ته ورسوئ. وروسته به زده کړې او مناسبې لارې وڅېړل شي.","تاسو مهم ژبنی بنسټ لرئ. اوس باید زده کړې، موخه او د آوسبیلدونګ ژبني شرایط وڅېړل شي.","ستاسو آلماني ښه بنسټ دی. اوس مناسب مسلکونه، زده کړې او اسناد ارزول کېدای شي."],
+        studium:["د پوهنتون لپاره لومړی آلماني B2 یا C1 ته ورسوئ. هم‌مهاله باید ستاسو سند وڅېړل شي.","تاسو د ډېرو تحصیلي لارو ژبنۍ کچې ته نږدې یاست. اوس باید سند، څانګه او شرایط وڅېړل شي.","ستاسو آلماني ښه بنسټ دی. اوس د پوهنتون شرایط، اسناد او نېټې باید وڅېړل شي."],
+        arbeit:["د کار لپاره لومړی ژبه ډېره مهمه ده. وروسته تجربه، مسلکي اسناد او پېژندنه ارزول کېږي.","تاسو مهم ژبنی بنسټ لرئ. اوس باید تجربه، اسناد، پېژندنه او د کارفرما شرایط وڅېړل شي.","ستاسو آلماني ښه بنسټ دی. اوس مسلکي پروفایل، پېژندنه او مناسب فرصتونه ارزول کېدای شي."],
+        familiennachzug:["په هدفمند آلماني کورس پیل وکړئ. اړین ژبنی سند او اسناد ستاسو په شخصي حالت پورې اړه لري.","تاسو آلماني پوهه لرئ. اوس باید ستاسو د حالت لپاره اړین ژبنی سند او اسناد وڅېړل شي.","ستاسو ژبنۍ پوهه ښه بنسټ دی. اوس باید اړین اسناد وڅېړل شي."],
+        private_lessons:["شخصي زده‌کړیز پلان او لنډه ارزونه ښه لومړی ګام دی.","له لنډې ارزونې وروسته د بلې کچې لپاره شخصي پلان جوړېږي.","شخصي پلان د تخصصي ژبې او ازموینې لپاره مرسته کوي."],
+        paperwork_help:["د پیغام په برخه کې ولیکئ چې د کوم لیک یا فورم مرسته غواړئ. زموږ ټیم به یې وڅېړي. PEYWAND حقوقي مشوره نه ورکوي."],
+        mitarbeit:["خپل تحصیلات، تدریسي تجربه یا د مرستې ډول ولیکئ. زموږ ټیم به همکاري وڅېړي."],
+        unsicher:["ستونزه نشته. بشپړ پروفایل ولېږئ، زموږ ټیم به مناسب ګام شخصاً وڅېړي."]
+      }
+    }
+  };
+
+  function renderPathwayRecommendation() {
+    const form=document.querySelector("#bewerbung form");
+    if(!form) return;
+    let card=form.querySelector("#peyvand-recommendation");
+    if(!card){
+      card=document.createElement("section");
+      card.id="peyvand-recommendation";
+      card.setAttribute("aria-live","polite");
+      card.innerHTML='<div class="pr-top"><span class="pr-icon">✓</span><div><p class="pr-eye"></p><h3 class="pr-title"></h3></div></div><div class="pr-status"></div><p class="pr-body"></p><p class="pr-note"></p>';
+      const consent=form.elements.namedItem("consent")?.closest("label");
+      form.insertBefore(card,consent||form.querySelector('button[type="submit"]'));
+    }
+    if(!document.querySelector("#peyvand-recommendation-styles")){
+      const style=document.createElement("style");
+      style.id="peyvand-recommendation-styles";
+      style.textContent='#peyvand-recommendation{margin-top:24px;padding:22px;border:1px solid rgba(199,155,60,.35);border-radius:24px;background:linear-gradient(145deg,#fdfaf1,#f5ecd2);box-shadow:0 16px 40px rgba(17,59,46,.1);color:#153c31}.pr-top{display:flex;align-items:center;gap:13px}.pr-icon{display:grid;width:42px;height:42px;flex:0 0 42px;place-items:center;border-radius:14px;background:#0d3b2e;color:#efd078;font-weight:900}.pr-eye{margin:0;color:#916d22;font-size:10px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}.pr-title{margin:3px 0 0;font-family:Georgia,serif;font-size:22px;line-height:1.2;color:#12382e}.pr-status{display:none;margin-top:17px;width:max-content;max-width:100%;padding:7px 11px;border-radius:999px;background:#0d3b2e;color:#f6d77c;font-size:11px;font-weight:900}.pr-body{margin:16px 0 0;color:#294c42;font-size:14px;line-height:1.75}.pr-note{margin:15px 0 0;padding-top:14px;border-top:1px solid rgba(13,59,46,.12);color:#64766f;font-size:11px;line-height:1.65}#peyvand-recommendation[data-ready="true"] .pr-status{display:block}@media(max-width:639px){#peyvand-recommendation{padding:18px;border-radius:20px}.pr-title{font-size:20px}}';
+      document.head.append(style);
+    }
+    const copy=pathwayGuidance[language()];
+    const pathway=form.elements.namedItem("pathway")?.value||"";
+    const level=form.elements.namedItem("german_level")?.value||"";
+    const age=form.elements.namedItem("age_range")?.value||"";
+    const education=form.elements.namedItem("education_level")?.value||"";
+    setText(card.querySelector(".pr-eye"),copy.eyebrow);
+    setText(card.querySelector(".pr-title"),copy.title);
+    setText(card.querySelector(".pr-note"),copy.note);
+    if(!pathway||!level||!age||!education){
+      card.dataset.ready="false";
+      setText(card.querySelector(".pr-body"),copy.waiting);
+      setText(card.querySelector(".pr-status"),"");
+      return;
+    }
+    const rank={A0:0,A1:1,A2:2,B1:3,B2:4,C1_plus:5}[level]??0;
+    const index=rank<=2?0:rank===3?1:2;
+    const options=copy.paths[pathway]||copy.paths.unsicher;
+    const result=options[index]||options[0];
+    card.dataset.ready="true";
+    setText(card.querySelector(".pr-status"),(index===0?copy.first:copy.review)+" · "+copy.next);
+    setText(card.querySelector(".pr-body"),result);
+  }
+
   function accessToken() {
     for (let index = 0; index < localStorage.length; index++) {
       const key = localStorage.key(index);
@@ -1048,6 +1148,7 @@
     renderSocials().catch(() => {});
     try { applyTranslations(); } catch {}
     try { translateProfileForm(); } catch {}
+    try { renderPathwayRecommendation(); } catch {}
     try { arrangeMobileHero(); } catch {}
     try { improveBeginnerJourney(); } catch {}
     try { renderSocialAdmin(); } catch {}
