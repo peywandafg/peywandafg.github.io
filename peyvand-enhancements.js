@@ -1113,7 +1113,7 @@
         card=document.createElement("article");
         card.id="peyvand-quran";
         card.className="journey-path rounded-[2rem] p-6";
-        card.innerHTML='<span class="text-xs font-black tracking-[.18em] text-[#dfbd67]">05</span><h3 class="mt-7 font-serif text-2xl text-[#fff7e8]"></h3><p class="mt-3 text-sm leading-7 text-[#b9cbc3]"></p><a href="#bewerbung" class="mt-6 inline-flex items-center text-sm font-bold text-[#efd07a]"></a>';
+        card.innerHTML='<h3 class="font-serif text-2xl text-[#fff7e8]"></h3><p class="mt-3 text-sm leading-7 text-[#b9cbc3]"></p><a href="#bewerbung" class="mt-6 inline-flex items-center text-sm font-bold text-[#efd07a]"></a>';
         pathGrid.append(card);
       }
       setText(card.querySelector("h3"),copy.title);
@@ -1125,6 +1125,27 @@
           option.parentElement.value="quran_lessons";
           option.parentElement.dispatchEvent(new Event("change",{bubbles:true}));
         }
+      };
+    }
+
+    const trustGrid=document.querySelector(".hero-luxury .peyvand-trust-grid");
+    if(trustGrid){
+      let chip=document.querySelector("#peyvand-quran-chip");
+      if(!chip){
+        chip=document.createElement("div");
+        chip.id="peyvand-quran-chip";
+        chip.className="trust-chip flex items-center justify-center gap-2 px-3 py-5 text-xs font-bold tracking-[.08em] text-[#d7e2dc] sm:text-sm";
+        chip.innerHTML='<span class="grid h-7 w-7 place-items-center rounded-full border border-[#e1bc62]/40 text-[13px] font-black text-[#e1bc62]">☾</span><span></span>';
+        trustGrid.append(chip);
+      }
+      setText(chip.querySelector("span:last-child"),copy.label);
+      chip.setAttribute("role","link");
+      chip.setAttribute("tabindex","0");
+      chip.setAttribute("aria-label",copy.label+" öffnen");
+      const openQuran=()=>document.querySelector("#peyvand-quran")?.scrollIntoView({behavior:"smooth",block:"start"});
+      chip.onclick=openQuran;
+      chip.onkeydown=event=>{
+        if(event.key==="Enter"||event.key===" "){event.preventDefault();openQuran();}
       };
     }
 
